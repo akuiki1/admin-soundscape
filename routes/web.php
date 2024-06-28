@@ -9,6 +9,9 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AdminTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('laravel-examples/user-management');
 	})->name('user-management');
 
-	Route::get('tables', function () {
-		return view('tables');
-	})->name('tables');
+	Route::get('event', function () {
+		return view('event');
+	})->name('event');
 
     Route::get('venue', function () {
 		return view('venue');
@@ -86,3 +89,17 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
+
+// Event routes
+Route::get('/events', [EventController::class, 'index'])->name('event');
+Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+Route::post('/events/{id}/buy', [EventController::class, 'buy'])->name('events.buy');
+
+// User transaction routes
+Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transactions.show');
+Route::post('/transactions/{id}/upload-proof', [TransactionController::class, 'uploadProof'])->name('transactions.upload-proof');
+
+// Admin transaction routes
+Route::get('/admin/transactions', [AdminTransactionController::class, 'index'])->name('admin.transactions.index');
+Route::post('/admin/transactions/{id}/confirm', [AdminTransactionController::class, 'confirm'])->name('admin.transactions.confirm');
