@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('dashboard');
 
 	Route::get('billing', function () {
-		return view('billing');
+		return view('transaksi.billing');
 	})->name('billing');
 
 	Route::get('profile', function () {

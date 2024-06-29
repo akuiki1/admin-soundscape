@@ -72,7 +72,7 @@
                                             </td>
                                             {{-- nama event --}}
                                             <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">Admin</p>
+                                                <p class="text-xs font-weight-bold mb-0">Mp3Fest</p>
                                             </td>
                                             {{-- venue --}}
                                             <td class="text-center">
