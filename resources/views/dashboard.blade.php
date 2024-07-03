@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Event</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     $53,000
                                     <span class="text-success text-sm font-weight-bolder">+55%</span>
@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total User</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     2,300
                                     <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Venue</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     +3,462
                                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Penjualan Tiket</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     $103,430
                                     <span class="text-success text-sm font-weight-bolder">+5%</span>
@@ -234,9 +234,9 @@
                         <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                             <div class="card h-100 card-plain border">
                                 <div class="card-body d-flex flex-column justify-content-center text-center">
-                                    <a href="javascript:;">
-                                        <i class="fa fa-plus text-secondary mb-3"></i>
-                                        <h5 class=" text-secondary"> New Event </h5>
+                                    <a href="event">
+                                        <i class="fa fa-arrow-right text-secondary mb-3"></i>
+                                        <h5 class=" text-secondary"> Semua Event </h5>
                                     </a>
                                 </div>
                             </div>
@@ -287,10 +287,6 @@
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Creation Date
                                         </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Action
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -315,15 +311,6 @@
                                         <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">16/06/18</span>
                                         </td>
-                                        <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip"
-                                                data-bs-original-title="Edit user">
-                                                <i class="fas fa-user-edit text-secondary"></i>
-                                            </a>
-                                            <span>
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                            </span>
-                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="ps-4">
@@ -345,15 +332,6 @@
                                         </td>
                                         <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">05/05/20</span>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip"
-                                                data-bs-original-title="Edit user">
-                                                <i class="fas fa-user-edit text-secondary"></i>
-                                            </a>
-                                            <span>
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                            </span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -377,15 +355,6 @@
                                         <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">23/06/20</span>
                                         </td>
-                                        <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip"
-                                                data-bs-original-title="Edit user">
-                                                <i class="fas fa-user-edit text-secondary"></i>
-                                            </a>
-                                            <span>
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                            </span>
-                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="ps-4">
@@ -407,15 +376,6 @@
                                         </td>
                                         <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">26/10/17</span>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip"
-                                                data-bs-original-title="Edit user">
-                                                <i class="fas fa-user-edit text-secondary"></i>
-                                            </a>
-                                            <span>
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                            </span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -439,15 +399,6 @@
                                         <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">23/01/21</span>
                                         </td>
-                                        <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip"
-                                                data-bs-original-title="Edit user">
-                                                <i class="fas fa-user-edit text-secondary"></i>
-                                            </a>
-                                            <span>
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                            </span>
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -463,12 +414,13 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="row">
-                        <div class="col-lg-6 col-7">
-                            <h6>Projects</h6>
-                            <p class="text-sm mb-0">
+                        <div class="col-lg-6 col-5">
+                            <h6>Ringkasan Transaksi</h6>
+                            {{-- sub judul untuk transaksi --}}
+                            {{-- <p class="text-sm mb-0">
                                 <i class="fa fa-check text-info" aria-hidden="true"></i>
-                                <span class="font-weight-bold ms-1">30 done</span> this month
-                            </p>
+                                <span class="font-weight-bold ms-1"></span>
+                            </p> --}}
                         </div>
                         <div class="col-lg-6 col-5 my-auto text-end">
                             <div class="dropdown float-lg-end pe-4">
@@ -493,15 +445,15 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Companies</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Members</th>
+                                        Event</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Harga Tiket</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Budget</th>
+                                        Total tiket</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Completion</th>
+                                        Tiket Terjual</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -517,29 +469,11 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="avatar-group mt-2">
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                <img src="../assets/img/team-1.jpg" alt="team1">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                <img src="../assets/img/team-2.jpg" alt="team2">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Alexander Smith">
-                                                <img src="../assets/img/team-3.jpg" alt="team3">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                <img src="../assets/img/team-4.jpg" alt="team4">
-                                            </a>
-                                        </div>
-                                    </td>
                                     <td class="align-middle text-center text-sm">
                                         <span class="text-xs font-weight-bold"> $14,000 </span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold"> 1050 </span>
                                     </td>
                                     <td class="align-middle">
                                         <div class="progress-wrapper w-75 mx-auto">
@@ -567,61 +501,11 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="avatar-group mt-2">
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                <img src="../assets/img/team-2.jpg" alt="team5">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                <img src="../assets/img/team-4.jpg" alt="team6">
-                                            </a>
-                                        </div>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold"> $14,000 </span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold"> $3,000 </span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-wrapper w-75 mx-auto">
-                                            <div class="progress-info">
-                                                <div class="progress-percentage">
-                                                    <span class="text-xs font-weight-bold">10%</span>
-                                                </div>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info w-10" role="progressbar"
-                                                    aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-slack.svg"
-                                                    class="avatar avatar-sm me-3" alt="team7">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Fix Platform Errors</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="avatar-group mt-2">
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                <img src="../assets/img/team-3.jpg" alt="team8">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                <img src="../assets/img/team-1.jpg" alt="team9">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold"> Not set </span>
+                                        <span class="text-xs font-weight-bold"> 1050 </span>
                                     </td>
                                     <td class="align-middle">
                                         <div class="progress-wrapper w-75 mx-auto">
@@ -633,134 +517,6 @@
                                             <div class="progress">
                                                 <div class="progress-bar bg-gradient-success w-100" role="progressbar"
                                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-spotify.svg"
-                                                    class="avatar avatar-sm me-3" alt="spotify">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Launch our Mobile App</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="avatar-group mt-2">
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                <img src="../assets/img/team-4.jpg" alt="user1">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                <img src="../assets/img/team-3.jpg" alt="user2">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Alexander Smith">
-                                                <img src="../assets/img/team-4.jpg" alt="user3">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                <img src="../assets/img/team-1.jpg" alt="user4">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold"> $20,500 </span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-wrapper w-75 mx-auto">
-                                            <div class="progress-info">
-                                                <div class="progress-percentage">
-                                                    <span class="text-xs font-weight-bold">100%</span>
-                                                </div>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-success w-100" role="progressbar"
-                                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-jira.svg"
-                                                    class="avatar avatar-sm me-3" alt="jira">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Add the New Pricing Page</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="avatar-group mt-2">
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                <img src="../assets/img/team-4.jpg" alt="user5">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold"> $500 </span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-wrapper w-75 mx-auto">
-                                            <div class="progress-info">
-                                                <div class="progress-percentage">
-                                                    <span class="text-xs font-weight-bold">25%</span>
-                                                </div>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info w-25" role="progressbar"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="25"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-invision.svg"
-                                                    class="avatar avatar-sm me-3" alt="invision">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">Redesign New Online Shop</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="avatar-group mt-2">
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                <img src="../assets/img/team-1.jpg" alt="user6">
-                                            </a>
-                                            <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                <img src="../assets/img/team-4.jpg" alt="user7">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold"> $2,000 </span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-wrapper w-75 mx-auto">
-                                            <div class="progress-info">
-                                                <div class="progress-percentage">
-                                                    <span class="text-xs font-weight-bold">40%</span>
-                                                </div>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info w-40" role="progressbar"
-                                                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="40"></div>
                                             </div>
                                         </div>
                                     </td>
