@@ -23,23 +23,23 @@
                                         </th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Photo
+                                            Foto Venue
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Name
+                                            Nama Venue
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Email
+                                            Deskripsi
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            role
+                                            Layout Venue
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Creation Date
+                                            Kapasitas
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -206,6 +206,30 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <h6 class="mb-0">Informasi Dasar Venue</h6>
+                        <p class="text-sm">
+                            Admin dapat menambah dan mengedit informasi tentang venue, mengelola jadwal acara, pengaturan harga tiket, dan mengelola ketersediaan tiket. Informasi yang bisa dimasukkan meliputi:
+                        </p>
+                        <ul class="text-sm">
+                            <li>Nama Venue</li>
+                            <li>Alamat lengkap</li>
+                            <li>Deskripsi singkat tentang venue</li>
+                            <li>Foto atau gambar venue</li>
+                            <li>Nomor telepon</li>
+                            <li>Email</li>
+                            <li>Situs web resmi (jika ada)</li>
+                            <li>Informasi fasilitas venue</li>
+                            <li>Peta dan layout tempat duduk</li>
+                            <li>Daftar acara yang akan datang</li>
+                            <li>Detail tentang kategori tiket dan harga</li>
+                            <li>Data pengunjung atau pemegang tiket</li>
+                            <li>Fitur untuk mengirim notifikasi atau informasi penting kepada pengunjung</li>
+                            <li>Data penjualan tiket</li>
+                            <li>Statistik pengunjung</li>
+                            <li>Laporan keuangan</li>
+                        </ul>
                     </div>
                 </div>
             </div>

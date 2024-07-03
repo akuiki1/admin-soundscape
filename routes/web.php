@@ -41,19 +41,27 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('profile');
 
 	Route::get('tiket', function () {
-		return view('tiket');
+		return view('ticket.tiket');
 	})->name('tiket');
+
+	Route::get('add-user', function () {
+		return view('laravel-examples.add-user');
+	})->name('add-user');
+
+	Route::get('edit-user', function () {
+		return view('laravel-examples.edit-user');
+	})->name('edit-user');
 
 	Route::get('user-management', function () {
 		return view('laravel-examples/user-management');
 	})->name('user-management');
 
 	Route::get('event', function () {
-		return view('event');
+		return view('event.event');
 	})->name('event');
 
     Route::get('venue', function () {
-		return view('venue');
+		return view('venue.venue');
 	})->name('venue');
 
     Route::get('static-sign-in', function () {
@@ -103,3 +111,4 @@ Route::post('/transactions/{id}/upload-proof', [TransactionController::class, 'u
 // Admin transaction routes
 Route::get('/admin/transactions', [AdminTransactionController::class, 'index'])->name('admin.transactions.index');
 Route::post('/admin/transactions/{id}/confirm', [AdminTransactionController::class, 'confirm'])->name('admin.transactions.confirm');
+

@@ -255,7 +255,7 @@
                             <div>
                                 <h5 class="mb-0">All Users</h5>
                             </div>
-                            <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New
+                            <a href="user-management" class="btn bg-gradient-primary btn-sm mb-0" type="button">&nbsp; Kelola
                                 User</a>
                         </div>
                     </div>
