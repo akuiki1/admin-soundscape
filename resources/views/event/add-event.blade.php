@@ -8,11 +8,11 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <div class="d-flex flex-row justify-content-between mr-4">
-                                <a href="{{ route('user-management') }}" class="mb-0 mr-4">
+                                <a href="event" class="mb-0 mr-4">
                                     <i class="fas fa-arrow-left"></i>
                                 </a>
                                 <div>
-                                    <h5 class="mb-4" style="margin-left: 15px">Edit User</h5>
+                                    <h5 class="mb-4" style="margin-left: 15px">Tambahkan Event Baru</h5>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                     <input type="file" class="form-control" id="photo" name="photo">
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ route('user-management') }}"
+                                    <a href="event"
                                         class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
                                     <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Simpan</button>
                                 </div>

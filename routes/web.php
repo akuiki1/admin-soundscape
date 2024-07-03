@@ -60,6 +60,15 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('event.event');
 	})->name('event');
 
+	Route::get('add-event', function () {
+		return view('event.add-event');
+	})->name('event');
+
+	Route::get('edit-event', function () {
+		return view('event.edit-event');
+	})->name('event');
+
+
     Route::get('venue', function () {
 		return view('venue.venue');
 	})->name('venue');

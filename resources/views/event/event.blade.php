@@ -11,7 +11,7 @@
                                 <div>
                                     <h5 class="mb-0">Event</h5>
                                 </div>
-                                <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Event
+                                <a href="add-event" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Event
                                     Baru</a>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                                             </td>
                                             {{-- action --}}
                                             <td class="text-center">
-                                                <a href="#" class="mx-3" data-bs-toggle="tooltip"
+                                                <a href="edit-event" class="mx-3" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Edit Event">
                                                     <i class="fas fa-edit text-secondary"></i>
                                                 </a>
