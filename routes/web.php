@@ -36,6 +36,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('transaksi.billing');
 	})->name('billing');
 
+	Route::get('metode-pembayaran-baru', function () {
+		return view('transaksi.add-method');
+	})->name('add-payment-method');
+
+	Route::get('edit-metode-pembayaran', function () {
+		return view('transaksi.edit-method');
+	})->name('edit-payment-method');
+
 	Route::get('profile', function () {
 		return view('profile');
 	})->name('profile');

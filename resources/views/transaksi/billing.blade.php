@@ -77,8 +77,8 @@
                                         <h6 class="mb-0">Payment Method</h6>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
-                                                class="fas fa-plus"></i>&nbsp;&nbsp;Add New Card</a>
+                                        <a class="btn bg-gradient-dark mb-0" href="metode-pembayaran-baru"><i
+                                                class="fas fa-plus"></i>&nbsp;&nbsp;Metode Pembayaran Baru</a>
                                     </div>
                                 </div>
                             </div>
@@ -91,8 +91,10 @@
                                                 alt="logo">
                                             <h6 class="mb-0">
                                                 ****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
-                                            <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
+                                                <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card" href="edit-metode-pembayaran"></a>
+                                                <a class="fas fa-trash-alt ms-auto text-dark cursor-pointer"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Card" href="#"></a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -101,8 +103,10 @@
                                             <img class="w-10 me-3 mb-0" src="../assets/img/logos/visa.png" alt="logo">
                                             <h6 class="mb-0">
                                                 ****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;5248</h6>
-                                            <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
+                                                <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card" href="edit-metode-pembayaran"></a>
+                                                <a class="fas fa-trash-alt ms-auto text-dark cursor-pointer"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Card" href="#"></a>
                                         </div>
                                     </div>
                                 </div>
