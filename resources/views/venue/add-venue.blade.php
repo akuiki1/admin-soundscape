@@ -22,20 +22,28 @@
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Atas Nama Penerima Dana</label>
+                                    <label for="name" class="form-label">Nama Venue</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Nama Metode Pembayaran</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Nomor Rekening</label>
-                                    <input type="text" class="form-control" id="phone" name="phone">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="photo" class="form-label">Logo</label>
+                                    <label for="foto-venue" class="form-label">Foto</label>
                                     <input type="file" class="form-control" id="photo" name="photo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Deskripsi</label>
+                                    <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="layout-venue" class="form-label">Layout Venue</label>
+                                    <input type="file" class="form-control" id="photo" name="photo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kapasitas" class="form-label">Kapasitas</label>
+                                    <input type="text" class="form-control" id="kapasitas" name="kapasitas" required>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <a href="{{ route('venue') }}"
