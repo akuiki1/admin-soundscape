@@ -88,10 +88,10 @@
                                     Nama Event
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Tanggal Transaksi
+                                    Harga Tiket
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Jumlah Tiket
+                                    Jumlah Pembelian Tiket
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Total Harga
@@ -117,7 +117,7 @@
                                         'id' => 1,
                                         'user_name' => 'John Doe',
                                         'event_name' => 'Concert A',
-                                        'created_at' => '2024-06-28',
+                                        'created_at' => 'Rp '.'50.000',
                                         'ticket_quantity' => 2,
                                         'total_price' => 500000,
                                         'status' => 'pending',
@@ -128,7 +128,7 @@
                                         'id' => 2,
                                         'user_name' => 'Jane Smith',
                                         'event_name' => 'Concert B',
-                                        'created_at' => '2024-06-27',
+                                        'created_at' => 'Rp '.'50.000',
                                         'ticket_quantity' => 3,
                                         'total_price' => 750000,
                                         'status' => 'confirmed',
@@ -139,7 +139,7 @@
                                         'id' => 3,
                                         'user_name' => 'Jane Smith',
                                         'event_name' => 'Concert C',
-                                        'created_at' => '2024-06-27',
+                                        'created_at' => 'Rp '.'50.000',
                                         'ticket_quantity' => 3,
                                         'total_price' => 750000,
                                         'status' => 'rejected',
