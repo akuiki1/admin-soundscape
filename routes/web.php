@@ -52,6 +52,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('ticket.tiket');
 	})->name('tiket');
 
+	Route::get('tambahkan-tiket-baru', function () {
+		return view('ticket.add-tiket');
+	})->name('add-tiket');
+
+	Route::get('edit-tiket', function () {
+		return view('ticket.edit-tiket');
+	})->name('edit-tiket');
+
 	Route::get('add-user', function () {
 		return view('laravel-examples.add-user');
 	})->name('add-user');

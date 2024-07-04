@@ -10,7 +10,7 @@
                             <div>
                                 <h5 class="mb-0">Kelola Tiket</h5>
                             </div>
-                            <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Tiket Baru</a>
+                            <a href="tambahkan-tiket-baru" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Tiket Baru</a>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -56,7 +56,7 @@
                                             <p class="text-xs font-weight-bold mb-0">01/07/2024</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">$50</p>
+                                            <p class="text-xs font-weight-bold mb-0">Rp 50.000</p>
                                         </td>
                                         <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">1000</p>
@@ -68,11 +68,13 @@
                                             <span class="badge bg-gradient-success">Active</span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit tiket">
+                                            <a href="edit-tiket" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit tiket">
                                                 <i class="fas fa-pencil-alt text-secondary"></i>
                                             </a>
                                             <span>
+                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Hapus tiket">
                                                 <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                </a>
                                             </span>
                                         </td>
                                     </tr>
@@ -87,7 +89,7 @@
                                             <p class="text-xs font-weight-bold mb-0">10/07/2024</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">$45</p>
+                                            <p class="text-xs font-weight-bold mb-0">Rp 450.000</p>
                                         </td>
                                         <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">2000</p>
@@ -99,11 +101,13 @@
                                             <span class="badge bg-gradient-success">Active</span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit tiket">
+                                            <a href="edit-tiket" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit tiket">
                                                 <i class="fas fa-pencil-alt text-secondary"></i>
                                             </a>
                                             <span>
+                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Hapus tiket">
                                                 <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                </a>
                                             </span>
                                         </td>
                                     </tr>
