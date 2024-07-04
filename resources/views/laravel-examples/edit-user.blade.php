@@ -22,6 +22,10 @@
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
+                                    <label for="photo" class="form-label">Foto</label>
+                                    <input type="file" class="form-control" id="photo" name="photo">
+                                </div>
+                                <div class="mb-3">
                                     <label for="name" class="form-label">Nama</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
@@ -42,12 +46,8 @@
                                     <input type="text" class="form-control" id="location" name="location">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="about_me" class="form-label">Tentang Saya</label>
+                                    <label for="about-me" class="form-label">Bio</label>
                                     <textarea class="form-control" id="about_me" name="about_me" rows="3"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="photo" class="form-label">Foto</label>
-                                    <input type="file" class="form-control" id="photo" name="photo">
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <a href="{{ route('user-management') }}"
