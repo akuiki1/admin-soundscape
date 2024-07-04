@@ -17,7 +17,22 @@
                 </div>
                 <div class="card-body p-3">
                     <div class="row">
-                        <div class="col-md-4 mb-md-0 mb-4">
+                        <div class="col-md-3 mb-md-0 mb-4">
+                            <div class="card card-body border card-plain border-radius-lg flex align-items-center flex-row">
+                                <img class="w-10 me-3 mb-0" src="../assets/img/logos/bri.png" alt="logo">
+                                <div class="row">
+                                    <p class="text-xs font-weight-bold mb-0">Rizki Syandana</p>
+                                    <p class="text-xs text-secondary mb-0">0143 0103 5533 505</p>
+                                </div>
+                                <div class="d-flex justify-space-between">
+                                    <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-4" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Edit Card" href="edit-metode-pembayaran"></a>
+                                    <a class="fas fa-trash-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Delete Card" href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-md-0 mb-4">
                             <div
                                 class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
                                 <img class="w-10 me-3 mb-0" src="../assets/img/logos/bri.png" alt="logo">
@@ -33,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-md-0 mb-4">
+                        <div class="col-md-3 mb-md-0 mb-4">
                             <div
                                 class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
                                 <img class="w-10 me-3 mb-0" src="../assets/img/logos/bri.png" alt="logo">
@@ -49,7 +64,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-md-0 mb-4">
+                        <div class="col-md-3 mb-md-0 mb-4">
                             <div
                                 class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
                                 <img class="w-10 me-3 mb-0" src="../assets/img/logos/bni.png" alt="logo">
