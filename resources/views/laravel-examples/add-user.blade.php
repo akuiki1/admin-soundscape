@@ -42,8 +42,8 @@
                                     <input type="text" class="form-control" id="phone" name="phone">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="location" class="form-label">Lokasi</label>
-                                    <input type="text" class="form-control" id="location" name="location">
+                                    <label for="Alamat" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control" id="Alamat" name="Alamat">
                                 </div>
                                 <div class="mb-3">
                                     <label for="about_me" class="form-label">Tentang Saya</label>
