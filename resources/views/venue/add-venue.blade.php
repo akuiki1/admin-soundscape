@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="kapasitas" class="form-label">Kapasitas</label>
-                                    <input type="text" class="form-control" id="kapasitas" name="kapasitas" required>
+                                    <input class="form-control" type="number" value="1" id="example-number-input"></input>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <a href="{{ route('venue') }}"

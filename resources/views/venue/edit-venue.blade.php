@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat" required>
+                                    <textarea class="form-control" id="Alamat" name="alamat" rows="3"></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="layout-venue" class="form-label">Layout Venue</label>
@@ -47,11 +47,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="kapasitas" class="form-label">Kapasitas</label>
-                                    <input type="text" class="form-control" id="kapasitas" name="kapasitas" required>
+                                    <input class="form-control" type="number" value="1" id="example-number-input">
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ route('venue') }}"
-                                        class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
+                                    <a href="{{ route('venue') }}" class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
                                     <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Simpan</button>
                                 </div>
                             </form>

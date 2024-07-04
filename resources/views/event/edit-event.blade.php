@@ -22,32 +22,49 @@
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Telepon</label>
-                                    <input type="text" class="form-control" id="phone" name="phone">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="location" class="form-label">Lokasi</label>
-                                    <input type="text" class="form-control" id="location" name="location">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="about_me" class="form-label">Tentang Saya</label>
-                                    <textarea class="form-control" id="about_me" name="about_me" rows="3"></textarea>
+                                    <label for="id" class="form-label">ID</label>
+                                    <input type="text" placeholder="1" class="form-control" name="id" disabled />
                                 </div>
                                 <div class="mb-3">
                                     <label for="photo" class="form-label">Foto</label>
                                     <input type="file" class="form-control" id="photo" name="photo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama Event</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="venue">Venue</label>
+                                    <select class="form-control" id="venue" name="venue">
+                                        <option>stadion gelora bungkarno</option>
+                                        <option>Lapangan Dwi Warna Barabai</option>
+                                        <option>Gedung Sultan Suryansyah, Banjarmasin</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tiket">Tiket</label>
+                                    <select class="form-control" id="tiket" name="tiket">
+                                        <option>belum ada tiket</option>
+                                        <option>tersedia</option>
+                                        <option>habis</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status">Status Event</label>
+                                    <select class="form-control" id="status" name="status">
+                                        <option>Segera</option>
+                                        <option>Aktif</option>
+                                        <option>Selesai</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tanggal-expired-tiket" class="form-label">Tanggal Pelaksanaan</label>
+                                    <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00"
+                                        id="tanggal-expired-tiket">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="about_me" class="form-label">Deskripsi event</label>
+                                    <textarea class="form-control" id="about_me" name="about_me" rows="3"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <a href="event"
