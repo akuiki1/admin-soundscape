@@ -81,6 +81,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('venue.venue');
 	})->name('venue');
 
+	Route::get('tambahkan-venue-baru', function () {
+		return view('venue.add-venue');
+	})->name('tambahkan-venue-baru');
+
+	Route::get('edit-venue', function () {
+		return view('venue.edit-venue');
+	})->name('edit-venue');
+
     Route::get('static-sign-in', function () {
 		return view('static-sign-in');
 	})->name('sign-in');
