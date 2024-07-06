@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminTransactionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ use App\Http\Controllers\AdminTransactionController;
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/', [HomeController::class, 'home']);
+	Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', function () {
 		return view('dashboard');
 	})->name('dashboard');
@@ -60,17 +61,13 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('ticket.edit-tiket');
 	})->name('edit-tiket');
 
-	Route::get('add-user', function () {
-		return view('laravel-examples.add-user');
-	})->name('add-user');
+	Route::get('users', [UserController::class, 'index'])->name('users.index');
+	Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+	Route::post('users/store', [UserController::class, 'store'])->name('users.store');
+	Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+	Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
+	Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-	Route::get('edit-user', function () {
-		return view('laravel-examples.edit-user');
-	})->name('edit-user');
-
-	Route::get('user-management', function () {
-		return view('laravel-examples/user-management');
-	})->name('user-management');
 
 	Route::get('event', function () {
 		return view('event.event');
@@ -85,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('event');
 
 
-    Route::get('venue', function () {
+	Route::get('venue', function () {
 		return view('venue.venue');
 	})->name('venue');
 
@@ -97,18 +94,18 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('venue.edit-venue');
 	})->name('edit-venue');
 
-    Route::get('static-sign-in', function () {
+	Route::get('static-sign-in', function () {
 		return view('static-sign-in');
 	})->name('sign-in');
 
-    Route::get('static-sign-up', function () {
+	Route::get('static-sign-up', function () {
 		return view('static-sign-up');
 	})->name('sign-up');
 
-    Route::get('/logout', [SessionsController::class, 'destroy']);
+	Route::get('/logout', [SessionsController::class, 'destroy']);
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
-    Route::get('/login', function () {
+	Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
 });
@@ -116,19 +113,18 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/register', [RegisterController::class, 'create']);
-    Route::post('/register', [RegisterController::class, 'store']);
-    Route::get('/login', [SessionsController::class, 'create']);
-    Route::post('/session', [SessionsController::class, 'store']);
+	Route::get('/register', [RegisterController::class, 'create']);
+	Route::post('/register', [RegisterController::class, 'store']);
+	Route::get('/login', [SessionsController::class, 'create']);
+	Route::post('/session', [SessionsController::class, 'store']);
 	Route::get('/login/forgot-password', [ResetController::class, 'create']);
 	Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
 	Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
 	Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
-
 });
 
 Route::get('/login', function () {
-    return view('session/login-session');
+	return view('session/login-session');
 })->name('login');
 
 // Event routes
@@ -144,4 +140,3 @@ Route::post('/transactions/{id}/upload-proof', [TransactionController::class, 'u
 // Admin transaction routes
 Route::get('/admin/transactions', [AdminTransactionController::class, 'index'])->name('admin.transactions.index');
 Route::post('/admin/transactions/{id}/confirm', [AdminTransactionController::class, 'confirm'])->name('admin.transactions.confirm');
-
