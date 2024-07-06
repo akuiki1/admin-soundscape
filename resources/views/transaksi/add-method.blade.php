@@ -38,7 +38,7 @@
                                     <input type="file" class="form-control" id="photo" name="photo">
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ route('user-management') }}"
+                                    <a href="{{ route('billing') }}"
                                         class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
                                     <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Simpan</button>
                                 </div>
