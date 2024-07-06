@@ -80,7 +80,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Users $id)
     {
         $request->validate([
             'nama' => 'required',

@@ -21,7 +21,6 @@
                         <div class="p-3">
                             <form action="{{ url('users', $user->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
                                 <div class="mb-3">
                                     <label for="foto" class="form-label">Foto</label>
                                     <input type="file" class="form-control" id="foto" name="foto" value="{{ $user->foto }}" required>

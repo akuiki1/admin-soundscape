@@ -29,7 +29,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @forelse ($users as $user)
                                     <tr>
                                         <td class="ps-4">{{ $user->id }}</td>
                                         <td>
@@ -57,7 +57,11 @@
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="8" class="text-center">Tidak ada user</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
