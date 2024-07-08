@@ -17,6 +17,7 @@ use App\Http\Controllers\VenueController;
 use App\Models\Transaction;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,7 @@ use App\Http\Controllers\TicketController;
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/', [HomeController::class, 'home']);
-	Route::get('dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 	Route::get('profile', function () {
 		return view('profile');
