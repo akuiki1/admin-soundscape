@@ -10,7 +10,7 @@
                             <div>
                                 <h5 class="mb-0">Kelola Tiket</h5>
                             </div>
-                            <a href="tambahkan-tiket-baru" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Tiket Baru</a>
+                            <a href="{{ route('tickets.create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Tiket Baru</a>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -18,60 +18,36 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            ID
-                                        </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Nama
-                                        </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal
-                                        </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Harga
-                                        </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tersedia
-                                        </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Terjual
-                                        </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Aksi
-                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tersedia</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="ps-4">
-                                            <p class="text-xs font-weight-bold mb-0">1</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Concert A</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">01/07/2024</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Rp 50.000</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">1000</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">700</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="edit-tiket" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit tiket">
-                                                <i class="fas fa-pencil-alt text-secondary"></i>
-                                            </a>
-                                            <span>
-                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Hapus tiket">
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                    @foreach ($tickets as $ticket)
+                                        <tr>
+                                            <td class="ps-4">{{ $ticket->id }}</td>
+                                            <td>{{ $ticket->nama }}</td>
+                                            <td class="text-center">{{ $ticket->expiry_date }}</td>
+                                            <td class="text-center">{{ $ticket->price }}</td>
+                                            <td class="text-center">{{ $ticket->quantity }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ route('tickets.edit', $ticket->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit ticket">
+                                                    <i class="fas fa-pencil-alt text-secondary"></i>
                                                 </a>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                                <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" style="border:none; background:none;" data-bs-toggle="tooltip" data-bs-original-title="Hapus ticket">
+                                                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

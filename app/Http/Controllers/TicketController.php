@@ -3,75 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
-use App\Models\Event;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $tickets = Ticket::all();
-        return view('tickets.index', compact('tickets'));
+        return view('ticket.tiket', compact('tickets'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $events = Event::all();
-        return view('tickets.create', compact('events'));
+        return view('ticket.add-tiket');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'event_id' => 'required|exists:events,id',
+        $request->validate([
+            'nama' => 'required',
             'expiry_date' => 'required|date',
             'price' => 'required|numeric',
-            'quantity' => 'required|integer'
+            'quantity' => 'required|integer',
         ]);
 
-        Ticket::create($data);
-
+        Ticket::create($request->all());
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $ticket = Ticket::find($id);
+        return view('tickets.show', compact('ticket'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $ticket = Ticket::find($id);
+        return view('ticket.edit-tiket', compact('ticket'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'expiry_date' => 'required|date',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer',
+        ]);
+
+        $ticket = Ticket::find($id);
+        $ticket->update($request->all());
+        return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $ticket = Ticket::find($id);
+        $ticket->delete();
+        return redirect()->route('tickets.index')->with('success', 'Ticket deleted successfully.');
     }
 }

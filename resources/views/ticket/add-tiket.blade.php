@@ -8,7 +8,7 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <div class="d-flex flex-row justify-content-between mr-4">
-                                <a href="{{ route('tiket') }}" class="mb-0 mr-4">
+                                <a href="{{ route('tickets.index') }}" class="mb-0 mr-4">
                                     <i class="fas fa-arrow-left"></i>
                                 </a>
                                 <div>
@@ -19,30 +19,26 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="p-3">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('tickets.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="tanggal-expired-tiket" class="form-label">Nama</label>
-                                    <input class="form-control" type="text" id="Harga" required>
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input class="form-control" type="text" name="nama" id="nama" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="tanggal-expired-tiket" class="form-label">Tiket Berlaku Sampai</label>
-                                    <input class="form-control" type="datetime-local" id="tanggal-expired-tiket">
+                                    <label for="expiry_date" class="form-label">Tiket Berlaku Sampai</label>
+                                    <input class="form-control" type="date" name="expiry_date" id="expiry_date" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="harga" class="form-control-label">Harga Tiket</label>
-                                    <input class="form-control" type="text" value="Rp " id="Harga" required>
+                                    <label for="price" class="form-control-label">Harga Tiket</label>
+                                    <input class="form-control" type="number" step="0.01" name="price" id="price" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="jumlah" class="form-control-label">Jumlah Tiket</label>
-                                    <input class="form-control" type="number" value="1" id="Jumlah" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="jumlah" class="form-control-label">Tiket Terjual</label>
-                                    <input class="form-control" type="number" value="0" id="Jumlah" required>
+                                    <label for="quantity" class="form-control-label">Jumlah Tiket</label>
+                                    <input class="form-control" type="number" name="quantity" id="quantity" required>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ route('tiket') }}" class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
+                                    <a href="{{ route('tickets.index') }}" class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
                                     <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Simpan</button>
                                 </div>
                             </form>
