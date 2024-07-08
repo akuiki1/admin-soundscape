@@ -2,7 +2,6 @@
 
 @section('auth')
 
-
     @if(\Request::is('static-sign-up')) 
         @include('layouts.navbars.guest.nav')
         @yield('content')
@@ -33,7 +32,7 @@
 
         @elseif (\Request::is('virtual-reality')) 
             @include('layouts.navbars.auth.nav')
-            <div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('../assets/img/vr-bg.jpg') ; background-size: cover;">
+            <div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('{{ asset('assets/img/vr-bg.jpg') }}') ; background-size: cover;">
                 @include('layouts.navbars.auth.sidebar')
                 <main class="main-content mt-1 border-radius-lg">
                     @yield('content')
@@ -54,7 +53,5 @@
 
         @include('components.fixed-plugin')
     @endif
-
-    
 
 @endsection

@@ -13,6 +13,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminTransactionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VenueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('events/edit/{id}', [EventController::class, 'edit'])->name('edit');
 	Route::put('events/{id}', [EventController::class, 'update'])->name('update');
 	Route::delete('/events/destroy/{id}', [EventController::class, 'destroy'])->name('destroy');
-	
+
 	Route::get('add-event', function () {
 		return view('event.add-event');
 	})->name('event');
@@ -92,6 +93,16 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('venue', function () {
 		return view('venue.venue');
 	})->name('venue');
+	// web.php
+	Route::resource('venues', VenueController::class);
+	Route::get('/venues', [App\Http\Controllers\VenueController::class, 'index'])->name('venues.index');
+	Route::get('venues/show/{id}', [VenueController::class, 'show'])->name('venues.show');
+	Route::get('venues/show-layout/{id}', [VenueController::class, 'showLayout'])->name('showLayout');
+	Route::get('venues/create', [VenueController::class, 'create'])->name('venues.create');
+	Route::post('venues/store', [VenueController::class, 'store'])->name('venues.store');
+	Route::get('venues/edit/{id}', [VenueController::class, 'edit'])->name('venues.edit');
+	Route::put('venues/{id}', [VenueController::class, 'update'])->name('venues.update');
+	Route::delete('/venues/destroy/{id}', [VenueController::class, 'destroy'])->name('venues.destroy');
 
 	Route::get('tambahkan-venue-baru', function () {
 		return view('venue.add-venue');
