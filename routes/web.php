@@ -14,6 +14,8 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminTransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
+use App\Models\Transaction;
+use App\Http\Controllers\PaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,18 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('dashboard', function () {
 		return view('dashboard');
 	})->name('dashboard');
-
-	Route::get('billing', function () {
-		return view('transaksi.billing');
-	})->name('billing');
-
-	Route::get('metode-pembayaran-baru', function () {
-		return view('transaksi.add-method');
-	})->name('add-payment-method');
-
-	Route::get('edit-metode-pembayaran', function () {
-		return view('transaksi.edit-method');
-	})->name('edit-payment-method');
 
 	Route::get('profile', function () {
 		return view('profile');
@@ -87,6 +77,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('venues/edit/{id}', [VenueController::class, 'edit'])->name('venues.edit');
 	Route::put('venues/{id}', [VenueController::class, 'update'])->name('venues.update');
 	Route::delete('/venues/destroy/{id}', [VenueController::class, 'destroy'])->name('venues.destroy');
+
+	Route::get('billings', [PaymentMethodController::class, 'index'])->name('billings');
+	Route::get('billings/create', [PaymentMethodController::class, 'create'])->name('billings.create');
+	Route::post('billings/store', [PaymentMethodController::class, 'store'])->name('billings.store');
+	Route::get('billings/edit/{id}', [PaymentMethodController::class, 'edit'])->name('billings.edit');
+	Route::post('billings/update/{id}', [PaymentMethodController::class, 'update'])->name('billings.update');
+	Route::delete('billings/destroy/{id}', [PaymentMethodController::class, 'destroy'])->name('billings.destroy');
+	Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
+	Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
+
+
 
 	Route::get('static-sign-in', function () {
 		return view('static-sign-in');

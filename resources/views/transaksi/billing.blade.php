@@ -10,76 +10,34 @@
                             <h6 class="mb-0">Metode Pembayaran</h6>
                         </div>
                         <div class="col-6 text-end">
-                            <a class="btn bg-gradient-primary mb-0" href="metode-pembayaran-baru"><i
+                            <a class="btn bg-gradient-primary mb-0" href="{{ route('billings.create') }}"><i
                                     class="fas fa-plus"></i>&nbsp;&nbsp;Metode Pembayaran Baru</a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body p-3">
                     <div class="row">
+                        @foreach($paymentMethods as $method)
                         <div class="col-md-3 mb-md-0 mb-4">
                             <div class="card card-body border card-plain border-radius-lg flex align-items-center flex-row">
-                                <img class="w-10 me-3 mb-0" src="../assets/img/logos/bri.png" alt="logo">
+                                <img class="w-10 me-3 mb-0" src="{{ asset($method->bank_logo) }}" alt="logo">
                                 <div class="row">
-                                    <p class="text-xs font-weight-bold mb-0">Rizki Syandana</p>
-                                    <p class="text-xs text-secondary mb-0">0143 0103 5533 505</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{ $method->account_name }}</p>
+                                    <p class="text-xs text-secondary mb-0">{{ $method->account_number }}</p>
                                 </div>
                                 <div class="d-flex justify-space-between">
                                     <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-4" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Card" href="edit-metode-pembayaran"></a>
-                                    <a class="fas fa-trash-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Delete Card" href="#"></a>
+                                        data-bs-placement="top" title="Edit Card" href="{{ route('billings.edit', $method->id) }}"></a>
+                                    <form action="{{ route('billings.destroy', $method->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="fas fa-trash-alt ms-auto text-dark cursor-pointer border-0 bg-transparent"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Card"></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-md-0 mb-4">
-                            <div
-                                class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                                <img class="w-10 me-3 mb-0" src="../assets/img/logos/bri.png" alt="logo">
-                                <div class="row">
-                                    <p class="text-xs font-weight-bold mb-0">Rizki Syandana</p>
-                                    <p class="text-xs text-secondary mb-0">0143 0103 5533 505</p>
-                                </div>
-                                <div class="d-flex justify-space-between">
-                                    <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-4" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Card" href="edit-metode-pembayaran"></a>
-                                    <a class="fas fa-trash-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Delete Card" href="#"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-md-0 mb-4">
-                            <div
-                                class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                                <img class="w-10 me-3 mb-0" src="../assets/img/logos/bri.png" alt="logo">
-                                <div class="row">
-                                    <p class="text-xs font-weight-bold mb-0">Rizki Syandana</p>
-                                    <p class="text-xs text-secondary mb-0">0143 0103 5533 505</p>
-                                </div>
-                                <div class="d-flex justify-space-between">
-                                    <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-4" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Card" href="edit-metode-pembayaran"></a>
-                                    <a class="fas fa-trash-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Delete Card" href="#"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-md-0 mb-4">
-                            <div
-                                class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                                <img class="w-10 me-3 mb-0" src="../assets/img/logos/bni.png" alt="logo">
-                                <div class="row">
-                                    <p class="text-xs font-weight-bold mb-0">Rizki Syandana</p>
-                                    <p class="text-xs text-secondary mb-0">0143 0103 5533 505</p>
-                                </div>
-                                <div class="d-flex justify-space-between">
-                                    <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-4" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Card" href="edit-metode-pembayaran"></a>
-                                    <a class="fas fa-trash-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Delete Card" href="#"></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -126,93 +84,61 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                                $transactions = [
-                                    [
-                                        'id' => 1,
-                                        'user_name' => 'John Doe',
-                                        'event_name' => 'Concert A',
-                                        'created_at' => 'Rp '.'50.000',
-                                        'ticket_quantity' => 2,
-                                        'total_price' => 500000,
-                                        'status' => 'pending',
-                                        'payment_date' => '2024-06-28',
-                                        'payment_proof' => 'example.jpg',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'user_name' => 'Jane Smith',
-                                        'event_name' => 'Concert B',
-                                        'created_at' => 'Rp '.'50.000',
-                                        'ticket_quantity' => 3,
-                                        'total_price' => 750000,
-                                        'status' => 'confirmed',
-                                        'payment_date' => '2024-06-27',
-                                        'payment_proof' => 'example2.jpg',
-                                    ],
-                                    [
-                                        'id' => 3,
-                                        'user_name' => 'Jane Smith',
-                                        'event_name' => 'Concert C',
-                                        'created_at' => 'Rp '.'50.000',
-                                        'ticket_quantity' => 3,
-                                        'total_price' => 750000,
-                                        'status' => 'rejected',
-                                        'payment_date' => '2024-06-27',
-                                        'payment_proof' => 'example2.jpg',
-                                    ],
-                                ];
-                            @endphp
-
                             @foreach ($transactions as $transaction)
                                 <tr>
                                     <td class="ps-4">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction['id'] }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->id }}</p>
                                     </td>
                                     <td>
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction['user_name'] }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->user->nama }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction['event_name'] }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->event->name }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction['created_at'] }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ 'Rp ' . number_format($transaction->ticket->price, 0, ',', '.') }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction['ticket_quantity'] }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->quantity }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction['total_price'] }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ 'Rp ' . number_format($transaction->total_price, 0, ',', '.') }}</p>
                                     </td>
                                     <td class="text-center">
-                                        @if ($transaction['status'] == 'pending')
+                                        @if ($transaction->status == 'pending')
                                             <p class="badge badge-sm bg-gradient-warning">
-                                                {{ ucfirst($transaction['status']) }}</p>
-                                        @elseif($transaction['status'] == 'confirmed')
+                                                {{ ucfirst($transaction->status) }}</p>
+                                        @elseif($transaction->status == 'confirmed')
                                             <p class="badge badge-sm bg-gradient-success">
-                                                {{ ucfirst($transaction['status']) }}</p>
-                                        @elseif($transaction['status'] == 'rejected')
+                                                {{ ucfirst($transaction->status) }}</p>
+                                        @elseif($transaction->status == 'rejected')
                                             <p class="badge badge-sm bg-gradient-danger">
-                                                {{ ucfirst($transaction['status']) }}</p>
+                                                {{ ucfirst($transaction->status) }}</p>
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction['payment_date'] }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->payment_date }}</p>
                                     </td>
                                     <td class="text-center">
-                                        @if ($transaction['payment_proof'])
-                                            <a href="{{ asset('storage/' . $transaction['payment_proof']) }}"
+                                        @if ($transaction->payment_proof)
+                                            <a href="{{ asset('storage/' . $transaction->payment_proof) }}"
                                                 target="_blank" class="badge badge-sm bg-gradient-info">Lihat Bukti</a>
                                         @else
                                             <p class="text-xs font-weight-bold mb-0">Tidak Ada</p>
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        @if ($transaction['status'] == 'confirmed')
+                                        @if ($transaction->status == 'pending')
+                                            <form action="{{ route('transactions.confirm', $transaction->id) }}" method="POST" style="display:inline">
+                                                @csrf
+                                                <button type="submit" class="badge badge-sm bg-gradient-success border-0">Konfirmasi</button>
+                                            </form>
+                                            <form action="{{ route('transactions.reject', $transaction->id) }}" method="POST" style="display:inline">
+                                                @csrf
+                                                <button type="submit" class="badge badge-sm bg-gradient-danger border-0">Tolak</button>
+                                            </form>
+                                        @elseif ($transaction->status == 'confirmed')
                                             <a href="#" class="badge badge-sm bg-gradient-dark">Cetak Tiket</a>
-                                        @elseif ($transaction['status'] == 'pending')
-                                            <a href="#" class="badge badge-sm bg-gradient-success">Konfirmasi</a>
-                                            <a href="#" class="badge badge-sm bg-gradient-danger">Tolak</a>
                                         @else
                                             <p class="badge badge-sm bg-gradient-danger">Ditolak</p>
                                         @endif

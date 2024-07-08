@@ -8,7 +8,7 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <div class="d-flex flex-row justify-content-between mr-4">
-                                <a href="{{ route('billing') }}" class="mb-0 mr-4">
+                                <a href="{{ route('billings') }}" class="mb-0 mr-4">
                                     <i class="fas fa-arrow-left"></i>
                                 </a>
                                 <div>
