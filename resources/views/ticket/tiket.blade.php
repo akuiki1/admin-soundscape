@@ -21,8 +21,8 @@
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             ID
                                         </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Event
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nama
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Tanggal
@@ -35,9 +35,6 @@
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Terjual
-                                        </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Status
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi
@@ -65,9 +62,6 @@
                                             <p class="text-xs font-weight-bold mb-0">700</p>
                                         </td>
                                         <td class="text-center">
-                                            <span class="badge bg-gradient-success">Active</span>
-                                        </td>
-                                        <td class="text-center">
                                             <a href="edit-tiket" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit tiket">
                                                 <i class="fas fa-pencil-alt text-secondary"></i>
                                             </a>
@@ -78,40 +72,6 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="ps-4">
-                                            <p class="text-xs font-weight-bold mb-0">2</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Concert B</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">10/07/2024</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Rp 450.000</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">2000</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">1500</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <span class="badge bg-gradient-success">Active</span>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="edit-tiket" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit tiket">
-                                                <i class="fas fa-pencil-alt text-secondary"></i>
-                                            </a>
-                                            <span>
-                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Hapus tiket">
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </a>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <!-- Contoh lainnya -->
                                 </tbody>
                             </table>
                         </div>

@@ -22,12 +22,8 @@
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="status">Event</label>
-                                    <select class="form-control" id="status" name="status">
-                                        <option>Avenged Sevenfold</option>
-                                        <option>Queen</option>
-                                        <option>Seventeen</option>
-                                    </select>
+                                    <label for="tanggal-expired-tiket" class="form-label">Nama</label>
+                                    <input class="form-control" type="text" id="Harga" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tanggal-expired-tiket" class="form-label">Tiket Berlaku Sampai</label>
@@ -42,12 +38,8 @@
                                     <input class="form-control" type="number" value="1" id="Jumlah" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="status">Status Tiket</label>
-                                    <select class="form-control" id="status" name="status">
-                                        <option>pra-order</option>
-                                        <option>aktif</option>
-                                        <option>berakhir</option>
-                                    </select>
+                                    <label for="jumlah" class="form-control-label">Tiket Terjual</label>
+                                    <input class="form-control" type="number" value="0" id="Jumlah" required>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <a href="{{ route('tiket') }}" class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>

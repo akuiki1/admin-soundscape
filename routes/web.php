@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Models\Transaction;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,7 +88,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
 	Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
 
-
+	Route::resource('tickets', TicketController::class);
+	Route::get('tickets', [TicketController::class, 'index'])->name('tickets.index');
+	Route::get('tickets/show/{id}', [TicketController::class, 'show'])->name('tickets.show');
+	Route::get('tickets/create', [TicketController::class, 'create'])->name('tickets.create');
+	Route::post('tickets/store', [TicketController::class, 'store'])->name('tickets.store');
+	Route::get('tickets/edit/{id}', [TicketController::class, 'edit'])->name('tickets.edit');
+	Route::put('tickets/{id}', [TicketController::class, 'update'])->name('tickets.update');
+	Route::delete('/tickets/destroy/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
 	Route::get('static-sign-in', function () {
 		return view('static-sign-in');
