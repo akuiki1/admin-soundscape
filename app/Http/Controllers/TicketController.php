@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
+use App\Models\Event;
 use Illuminate\Http\Request;
-use App\Models\Venue;
 
-class VenueController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $venues = Venue::all();
-        return view('venues.index', compact('venues'));
+        $tickets = Ticket::all();
+        return view('tickets.index', compact('tickets'));
     }
 
     /**
@@ -21,7 +22,8 @@ class VenueController extends Controller
      */
     public function create()
     {
-        return view('venues.create');
+        $events = Event::all();
+        return view('tickets.create', compact('events'));
     }
 
     /**
@@ -30,18 +32,15 @@ class VenueController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'photo' => 'required|image',
-            'address' => 'required',
-            'layout' => 'required',
-            'capacity' => 'required|integer'
+            'event_id' => 'required|exists:events,id',
+            'expiry_date' => 'required|date',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer'
         ]);
 
-        $data['photo'] = $request->file('photo')->store('venues');
+        Ticket::create($data);
 
-        Venue::create($data);
-
-        return redirect()->route('venues.index')->with('success', 'Venue created successfully.');
+        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
     }
 
     /**
