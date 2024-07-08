@@ -74,12 +74,13 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('event.event');
 	})->name('event');
 
-	Route::get('/events', [App\Http\Controllers\EventController::class, 'index']);
-	Route::get('events/create', [EventController::class, 'create'])->name('create');
-	Route::post('events/store', [EventController::class, 'store'])->name('store');
-	Route::get('events/edit/{id}', [EventController::class, 'edit'])->name('edit');
-	Route::put('events/{id}', [EventController::class, 'update'])->name('update');
-	Route::delete('/events/destroy/{id}', [EventController::class, 'destroy'])->name('destroy');
+	Route::resource('events', EventController::class);
+	Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events.index');
+	Route::get('events/create', [EventController::class, 'create'])->name('events.create');
+	Route::post('events/store', [EventController::class, 'store'])->name('events.store');
+	Route::get('events/edit/{id}', [EventController::class, 'edit'])->name('events.edit');
+	Route::put('events/{id}', [EventController::class, 'update'])->name('events.update');
+	Route::delete('/events/destroy/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 
 	Route::get('add-event', function () {
 		return view('event.add-event');
