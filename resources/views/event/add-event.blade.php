@@ -8,7 +8,7 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <div class="d-flex flex-row justify-content-between mr-4">
-                                <a href="event" class="mb-0 mr-4">
+                                <a href="{{ url('events') }}" class="mb-0 mr-4">
                                     <i class="fas fa-arrow-left"></i>
                                 </a>
                                 <div>
@@ -63,7 +63,7 @@
                                     <textarea class="form-control" id="about_me" name="about_me" rows="3"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="event"
+                                    <a href="{{ url('events') }}"
                                         class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
                                     <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Simpan</button>
                                 </div>

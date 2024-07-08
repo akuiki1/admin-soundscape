@@ -25,7 +25,7 @@ class EventController extends Controller
     {
         $venues = Venue::all();
         $tickets = Ticket::all();
-        return view('add-event', compact('venues', 'tickets'));
+        return view('event.add-event', compact('venues', 'tickets'));
     }
 
     /**

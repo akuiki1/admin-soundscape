@@ -11,7 +11,7 @@
                                 <div>
                                     <h5 class="mb-0">Event</h5>
                                 </div>
-                                <a href="{{ route('create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Event Baru</a>
+                                <a href="{{ route('events.create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Event Baru</a>
                             </div>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -55,7 +55,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <span class="badge badge-sm bg-gradient-success">
-                                                    <a href="#" data-bs-toggle="tooltip" data-bs-original-title="Detail" style="color: white;">{{ $event->ticket->quantity > 0 ? 'Tersedia' : 'Habis' }}</a>
+                                                    <a href="{{ route('events.show') }}" data-bs-toggle="tooltip" data-bs-original-title="Detail" style="color: white;">{{ $event->ticket->quantity > 0 ? 'Tersedia' : 'Habis' }}</a>
                                                 </span>
                                             </td>
                                             <td class="text-center">
@@ -63,11 +63,11 @@
                                                 <p class="text-xs text-secondary mb-0">{{ $event->date->format('H:i') }}</p>
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ url('events/edit/' . $event->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit Event">
+                                                <a href="{{ route('events.edit' . $event->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit Event">
                                                     <i class="fas fa-edit text-secondary"></i>
                                                 </a>                                                
                                                 <span>
-                                                    <form action="{{ route('destroy', ['id' => $event->id]) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('events.destroy', ['id' => $event->id]) }}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-link mx-3" data-bs-toggle="tooltip" data-bs-original-title="Hapus Event" onclick="return confirm('Apakah Anda yakin untuk menghapus event ini?')">

@@ -69,32 +69,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
 	Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-
-	Route::get('event', function () {
-		return view('event.event');
-	})->name('event');
-
 	Route::resource('events', EventController::class);
-	Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events.index');
+	Route::get('/events', [EventController::class, 'index'])->name('events.index');
+	Route::get('events/show/{id}', [EventController::class, 'show'])->name('events.show');
 	Route::get('events/create', [EventController::class, 'create'])->name('events.create');
 	Route::post('events/store', [EventController::class, 'store'])->name('events.store');
 	Route::get('events/edit/{id}', [EventController::class, 'edit'])->name('events.edit');
 	Route::put('events/{id}', [EventController::class, 'update'])->name('events.update');
 	Route::delete('/events/destroy/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 
-	Route::get('add-event', function () {
-		return view('event.add-event');
-	})->name('event');
-
-	Route::get('edit-event', function () {
-		return view('event.edit-event');
-	})->name('event');
-
-
-	Route::get('venue', function () {
-		return view('venue.venue');
-	})->name('venue');
-	// web.php
 	Route::resource('venues', VenueController::class);
 	Route::get('/venues', [App\Http\Controllers\VenueController::class, 'index'])->name('venues.index');
 	Route::get('venues/show/{id}', [VenueController::class, 'show'])->name('venues.show');
@@ -104,14 +87,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('venues/edit/{id}', [VenueController::class, 'edit'])->name('venues.edit');
 	Route::put('venues/{id}', [VenueController::class, 'update'])->name('venues.update');
 	Route::delete('/venues/destroy/{id}', [VenueController::class, 'destroy'])->name('venues.destroy');
-
-	Route::get('tambahkan-venue-baru', function () {
-		return view('venue.add-venue');
-	})->name('tambahkan-venue-baru');
-
-	Route::get('edit-venue', function () {
-		return view('venue.edit-venue');
-	})->name('edit-venue');
 
 	Route::get('static-sign-in', function () {
 		return view('static-sign-in');
