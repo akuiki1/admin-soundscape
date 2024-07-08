@@ -9,8 +9,12 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'photo', 'venue_id', 'status', 'date', 'description'];
+    protected $fillable = ['name', 'photo', 'id_venue', 'id_ticket', 'status', 'date', 'description'];
 
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+    
     public function venue()
     {
         return $this->belongsTo(Venue::class, 'id_venue');

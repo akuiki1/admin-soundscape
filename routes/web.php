@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 	Route::resource('events', EventController::class);
-	Route::get('/events', [EventController::class, 'index'])->name('events.index');
+	Route::get('events', [EventController::class, 'index'])->name('events.index');
 	Route::get('events/show/{id}', [EventController::class, 'show'])->name('events.show');
 	Route::get('events/create', [EventController::class, 'create'])->name('events.create');
 	Route::post('events/store', [EventController::class, 'store'])->name('events.store');
@@ -129,17 +129,3 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/login', function () {
 	return view('session/login-session');
 })->name('login');
-
-// Event routes
-Route::get('/events', [EventController::class, 'index'])->name('event');
-Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
-Route::post('/events/{id}/buy', [EventController::class, 'buy'])->name('events.buy');
-
-// User transaction routes
-Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
-Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transactions.show');
-Route::post('/transactions/{id}/upload-proof', [TransactionController::class, 'uploadProof'])->name('transactions.upload-proof');
-
-// Admin transaction routes
-Route::get('/admin/transactions', [AdminTransactionController::class, 'index'])->name('admin.transactions.index');
-Route::post('/admin/transactions/{id}/confirm', [AdminTransactionController::class, 'confirm'])->name('admin.transactions.confirm');
