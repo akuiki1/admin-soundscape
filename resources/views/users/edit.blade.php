@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="p-3">
-                            <form action="{{ url('users', $user->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="foto" class="form-label">Foto</label>
@@ -50,7 +50,8 @@
                                     <textarea class="form-control" id="about_me" name="about_me" rows="3">{{ $user->about_me }}</textarea>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ url('users') }}" class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
+                                    <a href="{{ url('users') }}"
+                                        class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
                                     <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Simpan</button>
                                 </div>
                             </form>

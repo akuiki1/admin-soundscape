@@ -10,7 +10,7 @@
                         <div>
                             <h5 class="mb-0">All Users</h5>
                         </div>
-                        <a href="{{ url('users/create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New User</a>
+                        <a href="{{ route('users.create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New User</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -45,10 +45,10 @@
                                         <td class="col-1 text-center text-break">{{ $user->alamat }}</td>
                                         <td class="text-center">{{ $user->about_me }}</td>
                                         <td class="text-center">
-                                            <a href="{{ url('users/edit', $user->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                            <a href="{{ route('users.edit', $user->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                 <i class="fas fa-user-edit text-secondary"></i>
                                             </a>
-                                            <form action="{{ url('users/destroy', $user->id) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-link text-secondary" data-bs-toggle="tooltip" data-bs-original-title="Delete user">
