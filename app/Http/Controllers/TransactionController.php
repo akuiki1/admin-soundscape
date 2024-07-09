@@ -19,7 +19,7 @@ class TransactionController extends Controller
         $transaction->status = 'confirmed';
         $transaction->save();
 
-        return redirect()->route('billing')->with('success', 'Transaction confirmed successfully.');
+        return redirect()->route('billings')->with('success', 'Transaction confirmed successfully.');
     }
 
     public function reject($id)
@@ -28,6 +28,6 @@ class TransactionController extends Controller
         $transaction->status = 'rejected';
         $transaction->save();
 
-        return redirect()->route('billing')->with('success', 'Transaction rejected successfully.');
+        return redirect()->route('billings')->with('success', 'Transaction rejected successfully.');
     }
 }

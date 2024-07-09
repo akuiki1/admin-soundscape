@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="p-3">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('billings.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Atas Nama Penerima Dana</label>
@@ -38,7 +38,7 @@
                                     <input type="file" class="form-control" id="photo" name="photo">
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ route('user-management') }}"
+                                    <a href="{{ route('billings') }}"
                                         class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
                                     <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Simpan</button>
                                 </div>
