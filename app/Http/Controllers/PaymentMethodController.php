@@ -29,7 +29,7 @@ class PaymentMethodController extends Controller
         ]);
 
         if ($request->hasFile('bank_logo')) {
-            $fileName = time().'_'.$request->file('bank_logo')->getClientOriginalName();
+            $fileName = time() . '_' . $request->file('bank_logo')->getClientOriginalName();
             $filePath = $request->file('bank_logo')->storeAs('uploads', $fileName, 'public');
             $validated['bank_logo'] = '/storage/' . $filePath;
         }
@@ -56,7 +56,7 @@ class PaymentMethodController extends Controller
         $paymentMethod = PaymentMethod::findOrFail($id);
 
         if ($request->hasFile('bank_logo')) {
-            $fileName = time().'_'.$request->file('bank_logo')->getClientOriginalName();
+            $fileName = time() . '_' . $request->file('bank_logo')->getClientOriginalName();
             $filePath = $request->file('bank_logo')->storeAs('uploads', $fileName, 'public');
             $validated['bank_logo'] = '/storage/' . $filePath;
         }
@@ -65,6 +65,7 @@ class PaymentMethodController extends Controller
 
         return redirect()->route('billings')->with('success', 'Metode Pembayaran berhasil diperbarui.');
     }
+
 
     public function destroy($id)
     {

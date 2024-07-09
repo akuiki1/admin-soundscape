@@ -82,8 +82,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('billings/create', [PaymentMethodController::class, 'create'])->name('billings.create');
 	Route::post('billings/store', [PaymentMethodController::class, 'store'])->name('billings.store');
 	Route::get('billings/edit/{id}', [PaymentMethodController::class, 'edit'])->name('billings.edit');
-	Route::post('billings/update/{id}', [PaymentMethodController::class, 'update'])->name('billings.update');
+	Route::put('billings/update/{id}', [PaymentMethodController::class, 'update'])->name('billings.update');
 	Route::delete('billings/destroy/{id}', [PaymentMethodController::class, 'destroy'])->name('billings.destroy');
+
 	Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
 	Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
 

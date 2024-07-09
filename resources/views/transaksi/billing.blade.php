@@ -20,13 +20,13 @@
                         @foreach($paymentMethods as $method)
                         <div class="col-md-3 mb-md-0 mb-4">
                             <div class="card card-body border card-plain border-radius-lg flex align-items-center flex-row">
-                                <img class="w-10 me-3 mb-0" src="{{ asset($method->bank_logo) }}" alt="logo">
+                                <img class="w-20 h-20 me-3 mb-0" src="{{ asset($method->bank_logo) }}" alt="logo">
                                 <div class="row">
-                                    <p class="text-xs font-weight-bold mb-0">{{ $method->account_name }}</p>
+                                    <p class="text-s font-weight-bold mb-0">{{ $method->account_name }}</p>
                                     <p class="text-xs text-secondary mb-0">{{ $method->account_number }}</p>
                                 </div>
-                                <div class="d-flex justify-space-between">
-                                    <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-4" data-bs-toggle="tooltip"
+                                <div class="d-flex justify-space-between mb-0">
+                                    <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-3 p-1" data-bs-toggle="tooltip"
                                         data-bs-placement="top" title="Edit Card" href="{{ route('billings.edit', $method->id) }}"></a>
                                     <form action="{{ route('billings.destroy', $method->id) }}" method="POST">
                                         @csrf
