@@ -47,8 +47,8 @@
                   <a href="/login/forgot-password" class="text-info text-gradient font-weight-bold">here</a>
                 </small>
                   <p class="mb-4 text-sm mx-auto">
-                    Don't have an account?
-                    <a href="register" class="text-info text-gradient font-weight-bold">Sign up</a>
+                    Anda Bukan Admin?
+                    <a href="/login-user" class="text-info text-gradient font-weight-bold">Login Disini</a>
                   </p>
                 </div>
               </div>
