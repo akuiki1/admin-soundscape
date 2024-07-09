@@ -128,3 +128,11 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/login', function () {
 	return view('session/login-session');
 })->name('login');
+
+Route::get('login-user', function () {
+	return view('tampilanuser/login/login');
+})->name('login-user');
+
+Route::get('signup-user', function () {
+	return view('tampilanuser/login/signup');
+})->name('signup-user');
