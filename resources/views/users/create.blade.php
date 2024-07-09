@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="p-3">
-                            <form action="{{ url('users/store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="foto" class="form-label">Foto</label>
