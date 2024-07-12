@@ -1,15 +1,19 @@
 <?php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Venue extends Model
 {
-    use HasFactory;
+    protected $table = 'venue'; // Pastikan nama tabel sesuai dengan yang ada di database
+    protected $primaryKey = 'id_venue'; // Tambahkan ini untuk menggunakan id_venue sebagai primary key
 
-    protected $table = 'venue';
-    protected $primaryKey = 'id_venue';
-    protected $fillable = ['name', 'photo', 'address', 'layout', 'capacity'];
+    // Tambahkan atribut lain yang diperlukan
+    protected $fillable = [
+        'name',
+        'photo',
+        'address',
+        'layout',
+        'capacity',
+    ];
 }

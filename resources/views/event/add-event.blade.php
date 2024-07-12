@@ -31,10 +31,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="id_venue" class="form-label">Venue</label>
-                                    <select name="id_venue" id="id_venue" class="form-control">
+                                    <select name="id_venue" id="id_venue" class="form-control" required>
                                         <option value="">Pilih Venue</option>
                                         @foreach($venues as $venue)
-                                            <option value="{{ $venue->id }}">{{ $venue->name }}</option>
+                                            <option value="{{ $venue->id_venue }}">{{ $venue->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -51,7 +51,7 @@
                                     <label for="date" class="form-label">Tanggal Pelaksanaan</label>
                                     <input type="datetime-local" class="form-control" id="date" name="date" required>
                                 </div>
-                                {{-- <div class="mb-3">
+                                <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <select name="status" id="status" class="form-control">
                                         <option value="segera">Segera</option>
@@ -59,15 +59,12 @@
                                         <option value="berlangsung">Berlangsung</option>
                                         <option value="berakhir">Berakhir</option>
                                     </select>
-                                </div> --}}
+                                </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Deskripsi</label>
-                                    <textarea name="description" id="description" cols="30" rows="4" class="form-control"></textarea>
+                                    <textarea class="form-control" id="description" name="description"></textarea>
                                 </div>
-                                <div class="d-flex justify-content-end">
-                                    <a href="{{ route('events.index') }}" class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
-                                    <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Tambahkan</button>
-                                </div>
+                                <button type="submit" class="btn bg-gradient-primary btn-md mt-4 mb-4">Tambah Event</button>
                             </form>
                         </div>
                     </div>

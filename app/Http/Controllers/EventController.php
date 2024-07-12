@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Event;
@@ -23,23 +24,27 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $validated = $request->validate([
             'name' => 'required',
             'photo' => 'nullable|image',
             'id_venue' => 'required',
             'id_ticket' => 'required',
-            // 'status' => 'required',
+            'status' => 'required',
             'date' => 'required|date',
             'description' => 'nullable'
         ]);
 
         if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('photos');
+            $fileName = time() . '_' . $request->file('photo')->getClientOriginalName();
+            $filePath = $request->file('photo')->storeAs('uploads', $fileName, 'public');
+            $validated['photo'] = '/storage/' . $filePath;
         }
 
         Event::create($validated);
 
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')->with('success', 'Event created successfully.');
     }
 
     public function edit($id)
@@ -62,18 +67,22 @@ class EventController extends Controller
             'description' => 'nullable'
         ]);
 
+        $event = Event::findOrFail($id);
+
         if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('photos');
+            $fileName = time() . '_' . $request->file('photo')->getClientOriginalName();
+            $filePath = $request->file('photo')->storeAs('uploads', $fileName, 'public');
+            $validated['photo'] = '/storage/' . $filePath;
         }
 
-        Event::where('id', $id)->update($validated);
+        $event->update($validated);
 
-        return redirect()->route('events.index')->with('success', 'Event created successfully.');
+        return redirect()->route('events.index')->with('success', 'Event updated successfully.');
     }
 
     public function destroy($id)
     {
         Event::destroy($id);
-        return redirect()->route('events.index')->with('success', 'Event destroy successfully.');
+        return redirect()->route('events.index')->with('success', 'Event deleted successfully.');
     }
 }

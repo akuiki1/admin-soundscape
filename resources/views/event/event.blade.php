@@ -36,7 +36,7 @@
                                             </td>
                                             <td>
                                                 <div>
-                                                    <img src="{{ asset('storage/' . $event->photo) }}" class="avatar avatar-sm me-3">
+                                                    <img src="{{ asset($event->photo) }}" class="avatar avatar-sm me-3">
                                                 </div>
                                             </td>
                                             <td class="text-center">
