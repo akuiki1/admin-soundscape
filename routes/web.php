@@ -36,69 +36,69 @@ use App\Http\Controllers\SessionUserController;
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('/', [HomeController::class, 'home']);
-	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	Route::get('/', [HomeController::class, 'home'])->middleware('userAkses:admin');
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('userAkses:admin');
 
 	Route::get('profile', function () {
 		return view('profile');
-	})->name('profile');
+	})->name('profile')->middleware('userAkses:admin');
 
 	Route::get('tiket', function () {
 		return view('ticket.tiket');
-	})->name('tiket');
+	})->name('tiket')->middleware('userAkses:admin');
 
 	Route::get('tambahkan-tiket-baru', function () {
 		return view('ticket.add-tiket');
-	})->name('add-tiket');
+	})->name('add-tiket')->middleware('userAkses:admin');
 
 	Route::get('edit-tiket', function () {
 		return view('ticket.edit-tiket');
-	})->name('edit-tiket');
+	})->name('edit-tiket')->middleware('userAkses:admin');
 
-	Route::get('users', [UserController::class, 'index'])->name('users.index');
-	Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-	Route::post('users/store', [UserController::class, 'store'])->name('users.store');
-	Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
-	Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
-	Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+	Route::get('users', [UserController::class, 'index'])->name('users.index')->middleware('userAkses:admin');
+	Route::get('users/create', [UserController::class, 'create'])->name('users.create')->middleware('userAkses:admin');
+	Route::post('users/store', [UserController::class, 'store'])->name('users.store')->middleware('userAkses:admin');
+	Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit')->middleware('userAkses:admin');
+	Route::put('users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('userAkses:admin');
+	Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('userAkses:admin');
 
 	Route::resource('events', EventController::class);
-	Route::get('events', [EventController::class, 'index'])->name('events.index');
-	Route::get('events/show/{id}', [EventController::class, 'show'])->name('events.show');
-	Route::get('events/create', [EventController::class, 'create'])->name('events.create');
-	Route::post('events/store', [EventController::class, 'store'])->name('events.store');
-	Route::get('events/edit/{id}', [EventController::class, 'edit'])->name('events.edit');
-	Route::put('events/{id}', [EventController::class, 'update'])->name('events.update');
-	Route::delete('/events/destroy/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+	Route::get('events', [EventController::class, 'index'])->name('events.index')->middleware('userAkses:admin');
+	Route::get('events/show/{id}', [EventController::class, 'show'])->name('events.show')->middleware('userAkses:admin');
+	Route::get('events/create', [EventController::class, 'create'])->name('events.create')->middleware('userAkses:admin');
+	Route::post('events/store', [EventController::class, 'store'])->name('events.store')->middleware('userAkses:admin');
+	Route::get('events/edit/{id}', [EventController::class, 'edit'])->name('events.edit')->middleware('userAkses:admin');
+	Route::put('events/{id}', [EventController::class, 'update'])->name('events.update')->middleware('userAkses:admin');
+	Route::delete('/events/destroy/{id}', [EventController::class, 'destroy'])->name('events.destroy')->middleware('userAkses:admin');
 
 	Route::resource('venues', VenueController::class);
-	Route::get('/venues', [App\Http\Controllers\VenueController::class, 'index'])->name('venues.index');
-	Route::get('venues/show/{id}', [VenueController::class, 'show'])->name('venues.show');
-	Route::get('venues/show-layout/{id}', [VenueController::class, 'showLayout'])->name('showLayout');
-	Route::get('venues/create', [VenueController::class, 'create'])->name('venues.create');
-	Route::post('venues/store', [VenueController::class, 'store'])->name('venues.store');
-	Route::get('venues/edit/{id}', [VenueController::class, 'edit'])->name('venues.edit');
-	Route::put('venues/{id}', [VenueController::class, 'update'])->name('venues.update');
-	Route::delete('/venues/destroy/{id}', [VenueController::class, 'destroy'])->name('venues.destroy');
+	Route::get('/venues', [App\Http\Controllers\VenueController::class, 'index'])->name('venues.index')->middleware('userAkses:admin');
+	Route::get('venues/show/{id}', [VenueController::class, 'show'])->name('venues.show')->middleware('userAkses:admin');
+	Route::get('venues/show-layout/{id}', [VenueController::class, 'showLayout'])->name('showLayout')->middleware('userAkses:admin');
+	Route::get('venues/create', [VenueController::class, 'create'])->name('venues.create')->middleware('userAkses:admin');
+	Route::post('venues/store', [VenueController::class, 'store'])->name('venues.store')->middleware('userAkses:admin');
+	Route::get('venues/edit/{id}', [VenueController::class, 'edit'])->name('venues.edit')->middleware('userAkses:admin');
+	Route::put('venues/{id}', [VenueController::class, 'update'])->name('venues.update')->middleware('userAkses:admin');
+	Route::delete('/venues/destroy/{id}', [VenueController::class, 'destroy'])->name('venues.destroy')->middleware('userAkses:admin');
 
-	Route::get('billings', [PaymentMethodController::class, 'index'])->name('billings');
-	Route::get('billings/create', [PaymentMethodController::class, 'create'])->name('billings.create');
-	Route::post('billings/store', [PaymentMethodController::class, 'store'])->name('billings.store');
-	Route::get('billings/edit/{id}', [PaymentMethodController::class, 'edit'])->name('billings.edit');
-	Route::put('billings/update/{id}', [PaymentMethodController::class, 'update'])->name('billings.update');
-	Route::delete('billings/destroy/{id}', [PaymentMethodController::class, 'destroy'])->name('billings.destroy');
+	Route::get('billings', [PaymentMethodController::class, 'index'])->name('billings')->middleware('userAkses:admin');
+	Route::get('billings/create', [PaymentMethodController::class, 'create'])->name('billings.create')->middleware('userAkses:admin');
+	Route::post('billings/store', [PaymentMethodController::class, 'store'])->name('billings.store')->middleware('userAkses:admin');
+	Route::get('billings/edit/{id}', [PaymentMethodController::class, 'edit'])->name('billings.edit')->middleware('userAkses:admin');
+	Route::put('billings/update/{id}', [PaymentMethodController::class, 'update'])->name('billings.update')->middleware('userAkses:admin');
+	Route::delete('billings/destroy/{id}', [PaymentMethodController::class, 'destroy'])->name('billings.destroy')->middleware('userAkses:admin');
 
-	Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
-	Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
+	Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm')->middleware('userAkses:admin');
+	Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject')->middleware('userAkses:admin');
 
 	Route::resource('tickets', TicketController::class);
-	Route::get('tickets', [TicketController::class, 'index'])->name('tickets.index');
-	Route::get('tickets/show/{id}', [TicketController::class, 'show'])->name('tickets.show');
-	Route::get('tickets/create', [TicketController::class, 'create'])->name('tickets.create');
-	Route::post('tickets/store', [TicketController::class, 'store'])->name('tickets.store');
-	Route::get('tickets/edit/{id}', [TicketController::class, 'edit'])->name('tickets.edit');
-	Route::put('tickets/{id}', [TicketController::class, 'update'])->name('tickets.update');
-	Route::delete('/tickets/destroy/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
+	Route::get('tickets', [TicketController::class, 'index'])->name('tickets.index')->middleware('userAkses:admin');
+	Route::get('tickets/show/{id}', [TicketController::class, 'show'])->name('tickets.show')->middleware('userAkses:admin');
+	Route::get('tickets/create', [TicketController::class, 'create'])->name('tickets.create')->middleware('userAkses:admin');
+	Route::post('tickets/store', [TicketController::class, 'store'])->name('tickets.store')->middleware('userAkses:admin');
+	Route::get('tickets/edit/{id}', [TicketController::class, 'edit'])->name('tickets.edit')->middleware('userAkses:admin');
+	Route::put('tickets/{id}', [TicketController::class, 'update'])->name('tickets.update')->middleware('userAkses:admin');
+	Route::delete('/tickets/destroy/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy')->middleware('userAkses:admin');
 
 	Route::get('static-sign-in', function () {
 		return view('static-sign-in');
@@ -133,18 +133,23 @@ Route::get('/login', function () {
 	return view('session/login-session');
 })->name('login');
 
-// Routes untuk login
-Route::get('login-user', [SessionUserController::class, 'showLoginForm'])->name('login-user');
-Route::post('users/authenticate', [SessionUserController::class, 'authenticate'])->name('user-auth');
+Route::group(['middleware' => 'guest'], function () {
+	// Routes untuk login
+	Route::get('login-user', [SessionUserController::class, 'showLoginForm'])->name('login-user');
+	Route::post('users/authenticate', [SessionUserController::class, 'authenticate'])->name('user-auth');
+	
+	// Routes untuk signup
+	Route::get('signup-user', [SessionUserController::class, 'showSignupForm'])->name('signup-user');
+	Route::post('users', [SessionUserController::class, 'register']);	
+});
 
-// Routes untuk signup
-Route::get('signup-user', [SessionUserController::class, 'showSignupForm'])->name('signup-user');
-Route::post('users', [SessionUserController::class, 'register']);
 
-// Route untuk logout
-Route::post('logout-user', [SessionUserController::class, 'logout'])->name('logout-user');
-Route::get('index-user', [IndexUserController::class, 'index'])->name('index-user');
-Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show');
-Route::get('/buy-ticket/{event_id}', [BuyTicketController::class, 'showBuyTicketForm'])->name('show-buy-ticket');
-Route::post('/buy-ticket/{event_id}', [BuyTicketController::class, 'storeBuyTicketForm'])->name('store-buy-ticket');
-
+Route::group(['middleware' => 'auth'], function () {	
+	// Route untuk logout
+	Route::post('logout-user', [SessionUserController::class, 'logout'])->name('logout-user')->middleware('userAkses:user');
+	Route::get('index-user', [IndexUserController::class, 'index'])->name('index-user')->middleware('userAkses:user');
+	Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show')->middleware('userAkses:user');
+	Route::get('/buy-ticket/{event_id}', [BuyTicketController::class, 'showBuyTicketForm'])->name('show-buy-ticket')->middleware('userAkses:user');
+	Route::post('/buy-ticket/{event_id}', [BuyTicketController::class, 'storeBuyTicketForm'])->name('store-buy-ticket')->middleware('userAkses:user');
+});
+	

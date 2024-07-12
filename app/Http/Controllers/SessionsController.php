@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class SessionsController extends Controller
 {
@@ -22,8 +22,12 @@ class SessionsController extends Controller
 
         if(Auth::attempt($attributes))
         {
-            session()->regenerate();
-            return redirect('dashboard')->with(['success'=>'You are logged in.']);
+            if(Auth::user()->role == 'admin'){
+                return redirect('dashboard')->with(['success'=>'Selamat Datang Admin']);
+            }
+            elseif(Auth::user()->role == 'user'){
+                return redirect('index-user')->with(['success'=>'You are logged in.']);
+            }
         }
         else{
 

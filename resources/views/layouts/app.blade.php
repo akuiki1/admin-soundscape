@@ -43,7 +43,7 @@
     <div x-data="{ show: true}"
         x-init="setTimeout(() => show = false, 4000)"
         x-show="show"
-        class="position-fixed bg-success text-white rounded end-3 top-3 text-sm py-2 px-4 z-index-9999">
+        class="position-fixed bg-success text-white rounded top-3 text-sm py-2 px-4 z-index-9999">
       <p class="m-0">{{ session('success')}}</p>
     </div>
   @endif
