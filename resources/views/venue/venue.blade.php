@@ -46,7 +46,7 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="d-flex flex-row align-items-center">
-                                                <img src="{{ asset('assets/img/' . $venue->photo) }}" class="avatar avatar-sm">
+                                                <img src="{{ asset($venue->photo) }}" class="avatar avatar-sm">
                                                 <p class="text-xs font-weight-bold mx-4 mb-0">{{ $venue->name }}</p>
                                             </div>
                                         </td>
