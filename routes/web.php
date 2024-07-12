@@ -18,6 +18,7 @@ use App\Models\Transaction;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IndexUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,3 +138,6 @@ Route::get('login-user', function () {
 Route::get('signup-user', function () {
 	return view('tampilanuser/login/signup');
 })->name('signup-user');
+
+Route::get('index-user', [IndexUserController::class, 'index'])->name('index-user');
+Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show');

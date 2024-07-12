@@ -51,10 +51,10 @@
                 </li>
             @else
                 <li>
-                    <a href="/signup" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Signup</a>
+                    <a href="{{ route('signup-user') }}" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Signup</a>
                 </li>
                 <li>
-                    <a href="/login" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <a href="{{ route('login-user') }}" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
                         Login</a>
                 </li>
             @endauth
