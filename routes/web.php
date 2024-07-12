@@ -19,6 +19,7 @@ use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexUserController;
+use App\Http\Controllers\BuyTicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,3 +142,6 @@ Route::get('signup-user', function () {
 
 Route::get('index-user', [IndexUserController::class, 'index'])->name('index-user');
 Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show');
+Route::get('/buy-ticket/{event_id}', [BuyTicketController::class, 'showBuyTicketForm'])->name('show-buy-ticket');
+Route::post('/buy-ticket/{event_id}', [BuyTicketController::class, 'storeBuyTicketForm'])->name('store-buy-ticket');
+
