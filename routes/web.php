@@ -114,14 +114,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
+
 });
 
 
 
 Route::group(['middleware' => 'guest'], function () {
 	Route::get('/register', [RegisterController::class, 'create']);
-	Route::post('/register', [RegisterController::class, 'store']);
-	Route::get('/login', [SessionsController::class, 'create']);
+	Route::post('/register', [RegisterController::class, 'store'])->name('register');
+	Route::get('/login', [SessionsController::class, 'create'])->name('login');
 	Route::post('/session', [SessionsController::class, 'store']);
 	Route::get('/login/forgot-password', [ResetController::class, 'create']);
 	Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
@@ -129,15 +130,11 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 });
 
-Route::get('/login', function () {
-	return view('session/login-session');
-})->name('login');
+Route::get('/sign-up', function () {
+	return view('session/register');
+})->name('sign-up');
 
 Route::group(['middleware' => 'guest'], function () {
-	// Routes untuk login
-	Route::get('login-user', [SessionUserController::class, 'showLoginForm'])->name('login-user');
-	Route::post('users/authenticate', [SessionUserController::class, 'authenticate'])->name('user-auth');
-	
 	// Routes untuk signup
 	Route::get('signup-user', [SessionUserController::class, 'showSignupForm'])->name('signup-user');
 	Route::post('users', [SessionUserController::class, 'register']);	
@@ -145,9 +142,8 @@ Route::group(['middleware' => 'guest'], function () {
 
 
 Route::group(['middleware' => 'auth'], function () {	
-	// Route untuk logout
-	Route::post('logout-user', [SessionUserController::class, 'logout'])->name('logout-user')->middleware('userAkses:user');
 	Route::get('index-user', [IndexUserController::class, 'index'])->name('index-user')->middleware('userAkses:user');
+	Route::post('logout-user', [SessionUserController::class, 'logout'])->name('logout-user')->middleware('userAkses:user');
 	Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show')->middleware('userAkses:user');
 	Route::get('/buy-ticket/{event_id}', [BuyTicketController::class, 'showBuyTicketForm'])->name('show-buy-ticket')->middleware('userAkses:user');
 	Route::post('/buy-ticket/{event_id}', [BuyTicketController::class, 'storeBuyTicketForm'])->name('store-buy-ticket')->middleware('userAkses:user');

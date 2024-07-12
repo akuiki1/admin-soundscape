@@ -40,9 +40,12 @@
             @auth
                 <li>
                     <span class="font-bold uppercase">
-                        Hello, {{ auth()->user()->firstname }}
+                        Hello, {{ auth()->user()->name }}
                     </span>
-                
+                </li>
+                <li>
+                    <a href="{{ route('signup-user') }}" class="hover:text-laravel text-decoration-none"><i class="fa-solid fa-user"></i> Profile</a>
+                </li>
                 <li>
                     <form method="POST" class="inline" action="logout-user">
                         @csrf
@@ -54,7 +57,7 @@
                     <a href="{{ route('signup-user') }}" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Signup</a>
                 </li>
                 <li>
-                    <a href="{{ route('login-user') }}" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <a href="{{ route('login') }}" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
                         Login</a>
                 </li>
             @endauth

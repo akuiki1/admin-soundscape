@@ -21,14 +21,16 @@ class RegisterController extends Controller
             'email' => ['required', 'email', 'max:50', Rule::unique('users', 'email')],
             'password' => ['required', 'min:5', 'max:20'],
             'agreement' => ['accepted']
+        ], [
+            'email.unique' => 'The email address is already registered. Please use a different email.'
         ]);
-        $attributes['password'] = bcrypt($attributes['password'] );
 
-        
+        $attributes['password'] = bcrypt($attributes['password']);
 
-        session()->flash('success', 'Your account has been created.');
         $user = User::create($attributes);
-        Auth::login($user); 
-        return redirect('/dashboard');
+
+        session()->flash('success', 'Your account has been created. Please log in.');
+
+        return redirect('login');
     }
 }

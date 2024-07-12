@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Users;
+use App\Models\User;
 
 class SessionUserController extends Controller
 {
@@ -51,7 +51,7 @@ class SessionUserController extends Controller
             'about_me' => 'nullable|string|max:255'
         ]);
 
-        $user = Users::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
