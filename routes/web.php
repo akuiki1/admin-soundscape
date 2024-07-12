@@ -20,6 +20,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexUserController;
 use App\Http\Controllers\BuyTicketController;
+use App\Http\Controllers\SessionUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,14 +133,16 @@ Route::get('/login', function () {
 	return view('session/login-session');
 })->name('login');
 
-Route::get('login-user', function () {
-	return view('tampilanuser/login/login');
-})->name('login-user');
+// Routes untuk login
+Route::get('login-user', [SessionUserController::class, 'showLoginForm'])->name('login-user');
+Route::post('users/authenticate', [SessionUserController::class, 'authenticate'])->name('user-auth');
 
-Route::get('signup-user', function () {
-	return view('tampilanuser/login/signup');
-})->name('signup-user');
+// Routes untuk signup
+Route::get('signup-user', [SessionUserController::class, 'showSignupForm'])->name('signup-user');
+Route::post('users', [SessionUserController::class, 'register']);
 
+// Route untuk logout
+Route::post('logout-user', [SessionUserController::class, 'logout'])->name('logout-user');
 Route::get('index-user', [IndexUserController::class, 'index'])->name('index-user');
 Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show');
 Route::get('/buy-ticket/{event_id}', [BuyTicketController::class, 'showBuyTicketForm'])->name('show-buy-ticket');

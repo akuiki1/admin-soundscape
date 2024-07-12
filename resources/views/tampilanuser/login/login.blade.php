@@ -7,10 +7,10 @@
                 <h2 class="text-2xl font-bold uppercase mb-1">
                     Login
                 </h2>
-                <p class="mb-4">Login to your account to post gigs</p>
+                <p class="mb-4">Login untuk mengakses akun Anda</p>
             </header>
 
-            <form method="POST" action="/users/authenticate">
+            <form method="POST" action="{{ route('user-auth') }}">
                 @csrf
 
                 <div class="mb-6">
@@ -43,11 +43,11 @@
                 <div class="mt-8">
                     <p>
                         Belum Punya Akun?
-                        <a href="signup-user" class="text-laravel">Daftar Sekarang</a>
+                        <a href="{{ route('signup-user') }}" class="text-laravel">Daftar Sekarang</a>
                     </p>
                     <p>
                         Anda Admin?
-                        <a href="login" class="text-laravel">Login Disini</a>
+                        <a href="{{ route('login') }}" class="text-laravel">Login Disini</a>
                     </p>
                 </div>
             </form>

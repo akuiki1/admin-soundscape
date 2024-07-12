@@ -44,7 +44,7 @@
                     </span>
                 
                 <li>
-                    <form method="POST" class="inline" action="/logout">
+                    <form method="POST" class="inline" action="logout-user">
                         @csrf
                         <button type="submit" class="hover:text-laravel"><i class="fa-solid fa-sign-out hover:text-laravel"></i> Logout</button>
                     </form>
