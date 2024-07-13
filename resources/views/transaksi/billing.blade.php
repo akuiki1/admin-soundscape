@@ -90,7 +90,7 @@
                                     <td class="ps-4">
                                         <p class="text-xs font-weight-bold mb-0">{{ $transaction->id }}</p>
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text">
                                         @if ($transaction->user)
                                             <p class="text-xs font-weight-bold mb-0">{{ $transaction->user->name }}</p>
                                         @else
