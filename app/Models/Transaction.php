@@ -22,16 +22,16 @@ class Transaction extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function event()
     {
-        return $this->belongsTo(Event::class, 'id');
+        return $this->belongsTo(Event::class, 'id_event');
     }
 
     public function payment_methods()
     {
-        return $this->belongsTo(PaymentMethod::class, 'id');
+        return $this->belongsTo(PaymentMethod::class, 'id_payment_methods');
     }
 }
