@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -13,8 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Users::all();
-        return view('users.index', compact('users'));
+        $admins = User::where('role', 'admin')->get();
+        $users = User::where('role', 'user')->get();
+        return view('users.index', compact('admins', 'users'));
     }
 
     /**
@@ -33,20 +34,22 @@ class UserController extends Controller
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => ['required', 'min:5', 'max:20'],
             'phone' => 'nullable|string',
             'alamat' => 'nullable|string',
             'about_me' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'role' => 'required|string',
         ]);
 
-        $user = new Users();
+        $user = new User();
         $user->nama = $request->nama;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
         $user->alamat = $request->alamat;
         $user->about_me = $request->about_me;
+        $user->role = $request->role;
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
@@ -73,52 +76,56 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = Users::findOrFail($id);
+        $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Users $id)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'nullable|min:6',
+        // dd($request->all());
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:user,email,' . $id,
+            'password' => ['required', 'min:5', 'max:20'],
             'phone' => 'nullable|string',
-            'alamat' => 'nullable|string',
+            'location' => 'nullable|string',
             'about_me' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'role' => 'nullable|string',
         ]);
 
-        $user = Users::findOrFail($id);
-        $user->nama = $request->nama;
+        $user = User::findOrFail($id);
+
+        $user->name = $request->name;
         $user->email = $request->email;
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        }
+        $user['password'] = bcrypt($user['password']);
         $user->phone = $request->phone;
-        $user->alamat = $request->alamat;
+        $user->location = $request->location;
         $user->about_me = $request->about_me;
 
         if ($request->hasFile('foto')) {
-            $imageName = time().'.'.$request->foto->extension();
+            $imageName = time() . '.' . $request->foto->extension();
             $request->foto->storeAs('assets/img', $imageName);
             $user->foto = 'assets/img/' . $imageName;
         }
-
-        $user->save();
-
+        $user->role = $request->role;
+        
+        $user->update($validated);
+        dd($request->all());
+                
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
-        $user = Users::findOrFail($id);
+        $user = User::findOrFail($id);
         $user->delete();
 
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
