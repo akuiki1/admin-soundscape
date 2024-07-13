@@ -11,7 +11,7 @@ class PaymentMethodController extends Controller
     public function index()
     {
         $paymentMethods = PaymentMethod::all();
-        $transactions = Transaction::with(['user', 'event', 'ticket'])->get();
+        $transactions = Transaction::with(['user', 'event'])->get();
         return view('transaksi.billing', compact('paymentMethods', 'transactions'));
     }
 

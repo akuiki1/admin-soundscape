@@ -22,6 +22,6 @@ class Event extends Model
 
     public function ticket()
     {
-        return $this->belongsTo(Ticket::class, 'id_ticket');
+        return $this->belongsTo(Ticket::class, 'id');
     }
 }

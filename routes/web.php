@@ -88,9 +88,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('billings/edit/{id}', [PaymentMethodController::class, 'edit'])->name('billings.edit')->middleware('userAkses:admin');
 	Route::put('billings/update/{id}', [PaymentMethodController::class, 'update'])->name('billings.update')->middleware('userAkses:admin');
 	Route::delete('billings/destroy/{id}', [PaymentMethodController::class, 'destroy'])->name('billings.destroy')->middleware('userAkses:admin');
-
+	
 	Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm')->middleware('userAkses:admin');
 	Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject')->middleware('userAkses:admin');
+	Route::delete('transactions/{transaction}/reject', [TransactionController::class, 'destroy'])->name('hapus-transaksi')->middleware('userAkses:admin');
+	Route::get('transactions/{transaction}/print', [TransactionController::class, 'printTicket'])->name('transactions.print')->middleware('userAkses:admin');
 
 	Route::resource('tickets', TicketController::class);
 	Route::get('tickets', [TicketController::class, 'index'])->name('tickets.index')->middleware('userAkses:admin');

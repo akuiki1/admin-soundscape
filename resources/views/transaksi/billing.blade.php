@@ -17,26 +17,30 @@
                 </div>
                 <div class="card-body p-3">
                     <div class="row">
-                        @foreach($paymentMethods as $method)
-                        <div class="col-md-3 mb-md-0 mb-4">
-                            <div class="card card-body border card-plain border-radius-lg flex align-items-center flex-row">
-                                <img class="w-20 h-20 me-3 mb-0" src="{{ asset($method->bank_logo) }}" alt="logo">
-                                <div class="row">
-                                    <p class="text-s font-weight-bold mb-0">{{ $method->account_name }}</p>
-                                    <p class="text-xs text-secondary mb-0">{{ $method->account_number }}</p>
-                                </div>
-                                <div class="d-flex justify-space-between mb-0">
-                                    <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-3 p-1" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Card" href="{{ route('billings.edit', $method->id) }}"></a>
-                                    <form action="{{ route('billings.destroy', $method->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="fas fa-trash-alt ms-auto text-dark cursor-pointer border-0 bg-transparent"
-                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Card"></button>
-                                    </form>
+                        @foreach ($paymentMethods as $method)
+                            <div class="col-md-3 mb-md-0 mb-4">
+                                <div
+                                    class="card card-body border card-plain border-radius-lg flex align-items-center flex-row">
+                                    <img class="w-20 h-20 me-3 mb-0" src="{{ asset($method->bank_logo) }}" alt="logo">
+                                    <div class="row">
+                                        <p class="text-s font-weight-bold mb-0">{{ $method->account_name }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $method->account_number }}</p>
+                                    </div>
+                                    <div class="d-flex justify-space-between mb-0">
+                                        <a class="fas fa-pencil-alt ms-auto text-dark cursor-pointer me-3 p-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"
+                                            href="{{ route('billings.edit', $method->id) }}"></a>
+                                        <form action="{{ route('billings.destroy', $method->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                class="fas fa-trash-alt ms-auto text-dark cursor-pointer border-0 bg-transparent"
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Delete Card"></button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -59,9 +63,6 @@
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Nama Event
-                                </th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Harga Tiket
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Jumlah Pembelian Tiket
@@ -89,20 +90,34 @@
                                     <td class="ps-4">
                                         <p class="text-xs font-weight-bold mb-0">{{ $transaction->id }}</p>
                                     </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->user->nama }}</p>
+                                    <td class="text-center">
+                                        @if ($transaction->user)
+                                            <p class="text-xs font-weight-bold mb-0">{{ $transaction->user->name }}</p>
+                                        @else
+                                            <p class="text-xs font-weight-bold mb-0">Pengguna Tidak Ditemukan</p>
+                                        @endif
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->event->name }}</p>
+                                        @if ($transaction->event)
+                                            <p class="text-xs font-weight-bold mb-0">{{ $transaction->event->name }}</p>
+                                        @else
+                                            <p class="text-xs font-weight-bold mb-0">Event Tidak Ditemukan</p>
+                                        @endif
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ 'Rp ' . number_format($transaction->ticket->price, 0, ',', '.') }}</p>
+                                        @if ($transaction->quantity)
+                                            <p class="text-xs font-weight-bold mb-0">{{ $transaction->quantity }}</p>
+                                        @else
+                                            <p class="text-xs font-weight-bold mb-0">Jumlah Tiket Tidak ditemukan</p>
+                                        @endif
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $transaction->quantity }}</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ 'Rp ' . number_format($transaction->total_price, 0, ',', '.') }}</p>
+                                        @if ($transaction->total_price)
+                                            <p class="text-xs font-weight-bold mb-0">
+                                                {{ 'Rp ' . number_format($transaction->total_price, 0, ',', '.') }}</p>
+                                        @else
+                                            <p class="text-xs font-weight-bold mb-0">Total Harga Tidak Ditemukan</p>
+                                        @endif
                                     </td>
                                     <td class="text-center">
                                         @if ($transaction->status == 'pending')
@@ -114,14 +129,15 @@
                                         @elseif($transaction->status == 'rejected')
                                             <p class="badge badge-sm bg-gradient-danger">
                                                 {{ ucfirst($transaction->status) }}</p>
+                                            
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">{{ $transaction->payment_date }}</p>
                                     </td>
                                     <td class="text-center">
-                                        @if ($transaction->payment_proof)
-                                            <a href="{{ asset('storage/' . $transaction->payment_proof) }}"
+                                        @if ($transaction->bukti_transaksi)
+                                            <a href="{{ asset('storage/' . $transaction->bukti_transaksi) }}"
                                                 target="_blank" class="badge badge-sm bg-gradient-info">Lihat Bukti</a>
                                         @else
                                             <p class="text-xs font-weight-bold mb-0">Tidak Ada</p>
@@ -129,18 +145,28 @@
                                     </td>
                                     <td class="text-center">
                                         @if ($transaction->status == 'pending')
-                                            <form action="{{ route('transactions.confirm', $transaction->id) }}" method="POST" style="display:inline">
+                                            <form action="{{ route('transactions.confirm', $transaction->id) }}"
+                                                method="POST" style="display:inline">
                                                 @csrf
-                                                <button type="submit" class="badge badge-sm bg-gradient-success border-0">Konfirmasi</button>
+                                                <button type="submit"
+                                                    class="badge badge-sm bg-gradient-success border-0">Konfirmasi</button>
                                             </form>
-                                            <form action="{{ route('transactions.reject', $transaction->id) }}" method="POST" style="display:inline">
+                                            <form action="{{ route('transactions.reject', $transaction->id) }}"
+                                                method="POST" style="display:inline">
                                                 @csrf
-                                                <button type="submit" class="badge badge-sm bg-gradient-danger border-0">Tolak</button>
+                                                <button type="submit"
+                                                    class="badge badge-sm bg-gradient-danger border-0">Tolak</button>
                                             </form>
                                         @elseif ($transaction->status == 'confirmed')
-                                            <a href="#" class="badge badge-sm bg-gradient-dark">Cetak Tiket</a>
+                                            <a href="{{ route('transactions.print', $transaction->id) }}" class="btn bg-gradient-primary">Cetak Tiket</a>
                                         @else
-                                            <p class="badge badge-sm bg-gradient-danger">Ditolak</p>
+                                            <form action="{{ route('hapus-transaksi', $transaction->id) }}" method="POST"
+                                                style="display:inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn bg-gradient-danger border-0">Hapus</button>
+                                            </form>
                                         @endif
                                     </td>
                                 </tr>
