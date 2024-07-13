@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-
+    protected $table = 'events';
     protected $fillable = ['name', 'photo', 'id_venue', 'id_ticket', 'status', 'date', 'description'];
 
     protected $casts = [
@@ -22,6 +22,6 @@ class Event extends Model
 
     public function ticket()
     {
-        return $this->belongsTo(Ticket::class, 'id');
+        return $this->belongsTo(Ticket::class, 'id_ticket');
     }
 }
