@@ -23,36 +23,53 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="foto" class="form-label">Foto</label>
-                                    <input type="file" class="form-control" id="foto" name="foto">
+                                    <input type="file" class="form-control" id="foto" name="foto" placeholder="masukkan foto baru"> 
                                 </div>
+                            
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" required>
+                                    <label for="name" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="nama" value="{{ old('name') }}" required>
                                 </div>
+                            
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="email@email.dns">
                                 </div>
+                            
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <input type="password" class="form-control" placeholder="......" name="password" id="password" aria-label="Password" aria-describedby="password-addon">
+                                    @error('password')
+                                      <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                    @enderror
                                 </div>
+                            
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Telepon</label>
-                                    <input type="text" class="form-control" id="phone" name="phone">
+                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="+62" value="+628">
                                 </div>
+                            
                                 <div class="mb-3">
-                                    <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat">
+                                    <label for="location" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control" id="location" name="location" placeholder="alamat"> 
                                 </div>
+                            
                                 <div class="mb-3">
                                     <label for="about_me" class="form-label">Tentang Saya</label>
-                                    <textarea class="form-control" id="about_me" name="about_me" rows="3"></textarea>
+                                    <textarea class="form-control" id="about_me" name="about_me" rows="3" placeholder="deskripsikan dirimu"></textarea>
                                 </div>
+                            
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select name="role" id="role" class="form-control">
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                            
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ url('users') }}"
-                                        class="btn btn-gradient-dark btn-sm mb-0 me-2">Batal</a>
-                                    <button type="submit" class="btn bg-gradient-primary btn-sm mb-0">Tambahkan</button>
+                                    <a href="{{ url('users') }}" class="btn btn-gradient-dark btn-sm mb-8 me-2">Batal</a>
+                                    <button type="submit" class="btn bg-gradient-primary btn-sm mb-8">Tambahkan</button>
                                 </div>
                             </form>
                         </div>

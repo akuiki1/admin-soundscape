@@ -60,7 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('users/store', [UserController::class, 'store'])->name('users.store')->middleware('userAkses:admin');
 	Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit')->middleware('userAkses:admin');
 	Route::put('users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('userAkses:admin');
-	Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('userAkses:admin');
+	Route::delete('users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('userAkses:admin');
+
 
 	Route::resource('events', EventController::class);
 	Route::get('events', [EventController::class, 'index'])->name('events.index')->middleware('userAkses:admin');
@@ -114,7 +115,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
-
 });
 
 
@@ -137,15 +137,14 @@ Route::get('/sign-up', function () {
 Route::group(['middleware' => 'guest'], function () {
 	// Routes untuk signup
 	Route::get('signup-user', [SessionUserController::class, 'showSignupForm'])->name('signup-user');
-	Route::post('users', [SessionUserController::class, 'register']);	
+	Route::post('users', [SessionUserController::class, 'register']);
 });
 
 
-Route::group(['middleware' => 'auth'], function () {	
+Route::group(['middleware' => 'auth'], function () {
 	Route::get('index-user', [IndexUserController::class, 'index'])->name('index-user')->middleware('userAkses:user');
 	Route::post('logout-user', [SessionUserController::class, 'logout'])->name('logout-user')->middleware('userAkses:user');
 	Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show')->middleware('userAkses:user');
 	Route::get('/buy-ticket/{event_id}', [BuyTicketController::class, 'showBuyTicketForm'])->name('show-buy-ticket')->middleware('userAkses:user');
 	Route::post('/buy-ticket/{event_id}', [BuyTicketController::class, 'storeBuyTicketForm'])->name('store-buy-ticket')->middleware('userAkses:user');
 });
-	

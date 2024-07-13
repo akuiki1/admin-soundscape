@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $admins = User::where('role', 'admin')->get();
@@ -18,36 +15,30 @@ class UserController extends Controller
         return view('users.index', compact('admins', 'users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email|unique:users',
+            'name' => 'required',
+            'email' => 'required|email|unique:user',
             'password' => ['required', 'min:5', 'max:20'],
             'phone' => 'nullable|string',
-            'alamat' => 'nullable|string',
+            'location' => 'nullable|string',
             'about_me' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'role' => 'required|string',
         ]);
 
         $user = new User();
-        $user->nama = $request->nama;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
-        $user->alamat = $request->alamat;
+        $user->location = $request->location;
         $user->about_me = $request->about_me;
         $user->role = $request->role;
 
@@ -63,66 +54,58 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:user,email,' . $id,
-            'password' => ['required', 'min:5', 'max:20'],
+            'password' => 'nullable|min:5|max:20', // Password tidak wajib
             'phone' => 'nullable|string',
             'location' => 'nullable|string',
             'about_me' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'role' => 'nullable|string',
         ]);
-
+    
         $user = User::findOrFail($id);
-
+    
+        // Update user fields
         $user->name = $request->name;
         $user->email = $request->email;
-        $user['password'] = bcrypt($user['password']);
+        if ($request->filled('password')) { // Update password hanya jika diisi
+            $user->password = Hash::make($request->password);
+        }
         $user->phone = $request->phone;
         $user->location = $request->location;
         $user->about_me = $request->about_me;
-
+    
+        // Handle photo upload
         if ($request->hasFile('foto')) {
-            $imageName = time() . '.' . $request->foto->extension();
-            $request->foto->storeAs('assets/img', $imageName);
+            $file = $request->file('foto');
+            $imageName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('assets/img'), $imageName);
             $user->foto = 'assets/img/' . $imageName;
         }
+    
         $user->role = $request->role;
         
-        $user->update($validated);
-        dd($request->all());
-                
+        $user->save(); // Use save() instead of update() when modifying the model directly
+    
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
+    
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);

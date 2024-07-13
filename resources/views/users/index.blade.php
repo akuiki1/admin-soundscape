@@ -41,7 +41,7 @@
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Role</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Action</th>
                                     </tr>
                                 </thead>
@@ -51,22 +51,22 @@
                                             <td class="ps-4">{{ $admin->id }}</td>
                                             <td>
                                                 @if ($admin->foto)
-                                                    <img src="{{ asset($admin->foto) }}" alt="" width="50">
+                                                    <img src="{{ asset($admin->foto) }}" alt="" width="50" height="50" class="rounded">
                                                 @else
                                                     <img src="{{ asset('default-image.png') }}" alt="belum konek database"
                                                         width="50">
                                                 @endif
                                             </td>
-                                            <td class="text-center">{{ $admin->name }}</td>
-                                            <td class="text-center">{{ $admin->email }}</td>
-                                            <td class="text-center">{{ $admin->phone }}</td>
-                                            <td class="col-1 text-center text-break">{{ $admin->location }}</td>
-                                            <td class="text-center">{{ $admin->about_me }}</td>
-                                            <td class="text-center">{{ $admin->role }}</td>
-                                            <td class="text-center">
-                                                <a href="{{ route('users.edit', $admin->id) }}" class="mx-3"
+                                            <td class="text-center text-sm">{{ $admin->name }}</td>
+                                            <td class="text-center text-sm">{{ $admin->email }}</td>
+                                            <td class="text-center text-sm">{{ $admin->phone }}</td>
+                                            <td class="col-1 text-center text-sm text-break">{{ $admin->location }}</td>
+                                            <td class="text-center text-sm text-break">{{ $admin->about_me }}</td>
+                                            <td class="text-center text-sm">{{ $admin->role }}</td>
+                                            <td class="text-center text-sm">
+                                                <a href="{{ route('users.edit', $admin->id) }}" class=""
                                                     data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
+                                                    <i class="fas fa-user-edit text-secondary mt-3"></i>
                                                 </a>
                                                 <form action="{{ route('users.destroy', $admin->id) }}" method="POST"
                                                     style="display:inline;">
@@ -74,7 +74,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-link text-secondary"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Delete user">
-                                                        <i class="fas fa-trash text-secondary"></i>
+                                                        <i class="fas fa-trash text-secondary mt-3"></i>
                                                     </button>
                                                 </form>
                                             </td>
@@ -130,7 +130,7 @@
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Role</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Action</th>
                                     </tr>
                                 </thead>
@@ -139,23 +139,18 @@
                                         <tr>
                                             <td class="ps-4">{{ $user->id }}</td>
                                             <td>
-                                                @if ($user->foto)
-                                                    <img src="{{ asset($user->foto) }}" alt="" width="50">
-                                                @else
-                                                    <img src="{{ asset('default-image.png') }}" alt="belum konek database"
-                                                        width="50">
-                                                @endif
+                                                <img src="{{ asset($user->foto) }}" alt="foto user" class="text-xs rounded" width="50">
                                             </td>
-                                            <td class="text-center">{{ $user->name }}</td>
-                                            <td class="text-center">{{ $user->email }}</td>
-                                            <td class="text-center">{{ $user->phone }}</td>
-                                            <td class="col-1 text-center text-break">{{ $user->location }}</td>
-                                            <td class="text-center">{{ $user->about_me }}</td>
-                                            <td class="text-center">{{ $user->role }}</td>
-                                            <td class="text-center">
-                                                <a href="{{ route('users.edit', $user->id) }}" class="mx-3"
+                                            <td class="text-center text-sm">{{ $user->name }}</td>
+                                            <td class="text-center text-sm">{{ $user->email }}</td>
+                                            <td class="text-center text-sm">{{ $user->phone }}</td>
+                                            <td class="col-1 text-center text-sm text-break">{{ $user->location }}</td>
+                                            <td class="text-center text-sm text-break">{{ $user->about_me }}</td>
+                                            <td class="text-center text-sm">{{ $user->role }}</td>
+                                            <td class="text-center text-sm">
+                                                <a href="{{ route('users.edit', $user->id) }}" class=""
                                                     data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
+                                                    <i class="fas fa-user-edit text-secondary mt-3"></i>
                                                 </a>
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                                                     style="display:inline;">
@@ -163,7 +158,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-link text-secondary"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Delete user">
-                                                        <i class="fas fa-trash text-secondary"></i>
+                                                        <i class="fas fa-trash text-secondary mt-3"></i>
                                                     </button>
                                                 </form>
                                             </td>
