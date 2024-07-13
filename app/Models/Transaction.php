@@ -12,17 +12,17 @@ class Transaction extends Model
     protected $fillable = [
         'id_user', 
         'id_event', 
-        'id_ticket', 
+        'id_payment_methods', 
         'quantity', 
         'total_price', 
         'payment_date', 
-        'payment_proof', 
+        'bukti_transaksi', 
         'status'
     ];
 
     public function user()
     {
-        return $this->belongsTo(Users::class, 'id');
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function event()
@@ -30,8 +30,8 @@ class Transaction extends Model
         return $this->belongsTo(Event::class, 'id');
     }
 
-    public function ticket()
+    public function payment_methods()
     {
-        return $this->belongsTo(Ticket::class, 'id');
+        return $this->belongsTo(PaymentMethod::class, 'id');
     }
 }

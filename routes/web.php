@@ -146,5 +146,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('logout-user', [SessionUserController::class, 'logout'])->name('logout-user')->middleware('userAkses:user');
 	Route::get('events-user/{id}', [IndexUserController::class, 'show'])->name('events-user.show')->middleware('userAkses:user');
 	Route::get('/buy-ticket/{event_id}', [BuyTicketController::class, 'showBuyTicketForm'])->name('show-buy-ticket')->middleware('userAkses:user');
-	Route::post('/buy-ticket/{event_id}', [BuyTicketController::class, 'storeBuyTicketForm'])->name('store-buy-ticket')->middleware('userAkses:user');
+    Route::post('/buy-ticket/{event_id}', [BuyTicketController::class, 'storeBuyTicket'])->name('store-buy-ticket')->middleware('userAkses:user');
+	Route::get('/buy-ticket/complete/{transaction_id}', [BuyTicketController::class, 'complete'])->name('complete-buy-ticket')->middleware('userAkses:user');
+
 });

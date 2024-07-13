@@ -12,8 +12,9 @@
                 <form action="{{ route('store-buy-ticket', ['event_id' => $event->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-4 w-full">
-                        <label for="payment_method" class="block text-left">Pilih Metode Pembayaran:</label>
-                        <select name="payment_method" id="payment_method" class="w-full p-2 border rounded">
+                        <label for="id_payment_methods" class="block text-left">Pilih Metode Pembayaran:</label>
+                        <select name="id_payment_methods" id="id_payment_methods" class="w-full p-2 border rounded">
+                            <option value="">Pilih Metode Pembayaran</option>
                             @foreach($paymentMethods as $method)
                                 <option value="{{ $method->id }}">{{ $method->account_number }} - a/n {{ $method->account_name }}</option>
                             @endforeach
@@ -28,13 +29,12 @@
                         <input type="text" id="total_price" class="w-full p-2 border rounded bg-gray-100" readonly>
                     </div>
                     <div class="mb-4 w-full">
-                        <label for="payment_proof" class="block text-left">Unggah Bukti Pembayaran:</label>
-                        <input type="file" name="payment_proof" id="payment_proof" class="w-full p-2 border rounded" required>
+                        <label for="bukti_transaksi" class="block text-left">Unggah Bukti Pembayaran:</label>
+                        <input type="file" name="bukti_transaksi" id="bukti_transaksi" class="w-full p-2 border rounded" required>
                         <p class="text-sm text-start">*harap transfer sesuai total harga</p>
                     </div>
                     <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-xl hover:bg-orange-600 transition duration-300">Beli Tiket</button>
                 </form>
-                
             </div>
         </x-card>
     </div>

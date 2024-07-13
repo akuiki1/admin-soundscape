@@ -18,21 +18,26 @@ class BuyTicketController extends Controller
     
     public function storeBuyTicket(Request $request, $event_id) {
         $request->validate([
-            'payment_method' => 'required|exists:metode_pembayaran,id',
+            'id_payment_methods' => 'required|exists:payment_methods,id',
             'quantity' => 'required|integer|min:1',
-            'payment_proof' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bukti_transaksi' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
         $event = Event::findOrFail($event_id);
         $ticketPrice = $event->ticket->price;
         $totalPrice = $request->quantity * $ticketPrice;
     
-        $paymentProofPath = $request->file('payment_proof')->store('payment_proofs', 'public');
-    
+        if ($request->hasFile('bukti_transaksi')) {
+            $file = $request->file('bukti_transaksi');
+            $imageName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('assets/img'), $imageName);
+            $paymentProofPath = 'assets/img/' . $imageName;
+        }
+
         $transaction = new Transaction();
         $transaction->id_user = auth()->id();
         $transaction->id_event = $event_id;
-        $transaction->id_ticket = $event->ticket->id;
+        $transaction->id_payment_methods = $request->id_payment_methods;
         $transaction->quantity = $request->quantity;
         $transaction->total_price = $totalPrice;
         $transaction->payment_date = now();
@@ -40,7 +45,13 @@ class BuyTicketController extends Controller
         $transaction->status = 'pending';
         $transaction->save();
     
-        return redirect()->away('https://wa.me/YOUR_ADMIN_WHATSAPP_NUMBER?text=Saya%20telah%20melakukan%20pembayaran%20untuk%20event%20'.$event->name.'%20dengan%20ID%20Transaksi:%20'.$transaction->id);
+        return redirect()->route('complete-buy-ticket', ['transaction_id' => $transaction->id]);
     }
-    
+
+    public function complete($transaction_id) {
+        $transaction = Transaction::findOrFail($transaction_id);
+        $event = Event::findOrFail($transaction->id_event);
+
+        return view('tampilanuser.event.complete', compact('transaction', 'event'));
+    }
 }
