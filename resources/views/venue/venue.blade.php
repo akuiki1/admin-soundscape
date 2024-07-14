@@ -51,7 +51,7 @@
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $venue->address }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ Str::limit($venue->address, 50) }}</p>
                                         </td>
                                         <td class="text-center">
                                             <span class="badge badge-sm bg-gradient-info">

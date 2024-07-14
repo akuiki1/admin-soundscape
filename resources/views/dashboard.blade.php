@@ -106,7 +106,7 @@
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-m">{{ Str::limit($event->name, 100) }}</p>
+                                        <p class="text-gradient text-dark mb-2 text-m">{{ Str::limit($event->name, 30) }}</p>
                                         <a href="{{ route('events.index') }}">
                                             <h5>
                                                 {{ $event->title }}
