@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Storage;
 
 class PaymentMethodController extends Controller
 {
@@ -25,13 +26,13 @@ class PaymentMethodController extends Controller
         $validated = $request->validate([
             'account_name' => 'required|string|max:255',
             'account_number' => 'required|string|max:255',
-            'bank_logo' => 'nullable|image',
+            'bank_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('bank_logo')) {
-            $fileName = time() . '_' . $request->file('bank_logo')->getClientOriginalName();
-            $filePath = $request->file('bank_logo')->storeAs('uploads', $fileName, 'public');
-            $validated['bank_logo'] = '/storage/' . $filePath;
+            $fileName = time() . '.' . $request->file('bank_logo')->getClientOriginalExtension();
+            $request->file('bank_logo')->move(public_path('assets/img'), $fileName);
+            $validated['bank_logo'] = 'assets/img/' . $fileName;
         }
 
         PaymentMethod::create($validated);
@@ -50,15 +51,18 @@ class PaymentMethodController extends Controller
         $validated = $request->validate([
             'account_name' => 'required|string|max:255',
             'account_number' => 'required|string|max:255',
-            'bank_logo' => 'nullable|image',
+            'bank_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $paymentMethod = PaymentMethod::findOrFail($id);
 
         if ($request->hasFile('bank_logo')) {
-            $fileName = time() . '_' . $request->file('bank_logo')->getClientOriginalName();
-            $filePath = $request->file('bank_logo')->storeAs('uploads', $fileName, 'public');
-            $validated['bank_logo'] = '/storage/' . $filePath;
+            if ($paymentMethod->bank_logo && file_exists(public_path($paymentMethod->bank_logo))) {
+                unlink(public_path($paymentMethod->bank_logo));
+            }
+            $fileName = time() . '.' . $request->file('bank_logo')->getClientOriginalExtension();
+            $request->file('bank_logo')->move(public_path('assets/img'), $fileName);
+            $validated['bank_logo'] = 'assets/img/' . $fileName;
         }
 
         $paymentMethod->update($validated);
@@ -66,10 +70,14 @@ class PaymentMethodController extends Controller
         return redirect()->route('billings')->with('success', 'Metode Pembayaran berhasil diperbarui.');
     }
 
-
     public function destroy($id)
     {
         $paymentMethod = PaymentMethod::findOrFail($id);
+
+        if ($paymentMethod->bank_logo && file_exists(public_path($paymentMethod->bank_logo))) {
+            unlink(public_path($paymentMethod->bank_logo));
+        }
+
         $paymentMethod->delete();
 
         return redirect()->route('billings')->with('success', 'Metode Pembayaran berhasil dihapus.');

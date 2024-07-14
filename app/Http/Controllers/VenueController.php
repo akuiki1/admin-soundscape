@@ -30,15 +30,15 @@ class VenueController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $photoName = time() . '_' . $request->file('photo')->getClientOriginalName();
-            $photoPath = $request->file('photo')->storeAs('uploads', $photoName, 'public');
-            $validated['photo'] = '/storage/' . $photoPath;
+            $photoName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(public_path('assets/img'), $photoName);
+            $validated['photo'] = 'assets/img/' . $photoName;
         }
 
         if ($request->hasFile('layout')) {
-            $layoutName = time() . '_' . $request->file('layout')->getClientOriginalName();
-            $layoutPath = $request->file('layout')->storeAs('uploads', $layoutName, 'public');
-            $validated['layout'] = '/storage/' . $layoutPath;
+            $layoutName = time() . '.' . $request->file('layout')->getClientOriginalExtension();
+            $request->file('layout')->move(public_path('assets/img'), $layoutName);
+            $validated['layout'] = 'assets/img/' . $layoutName;
         }
 
         Venue::create($validated);
@@ -77,21 +77,21 @@ class VenueController extends Controller
         $venue = Venue::findOrFail($id_venue);
 
         if ($request->hasFile('photo')) {
-            if ($venue->photo && Storage::exists('public/' . $venue->photo)) {
-                Storage::delete('public/' . $venue->photo);
+            if ($venue->photo && file_exists(public_path($venue->photo))) {
+                unlink(public_path($venue->photo));
             }
-            $photoName = time() . '_' . $request->file('photo')->getClientOriginalName();
-            $photoPath = $request->file('photo')->storeAs('uploads', $photoName, 'public');
-            $validated['photo'] = '/storage/' . $photoPath;
+            $photoName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(public_path('assets/img'), $photoName);
+            $validated['photo'] = 'assets/img/' . $photoName;
         }
 
         if ($request->hasFile('layout')) {
-            if ($venue->layout && Storage::exists('public/' . $venue->layout)) {
-                Storage::delete('public/' . $venue->layout);
+            if ($venue->layout && file_exists(public_path($venue->layout))) {
+                unlink(public_path($venue->layout));
             }
-            $layoutName = time() . '_' . $request->file('layout')->getClientOriginalName();
-            $layoutPath = $request->file('layout')->storeAs('uploads', $layoutName, 'public');
-            $validated['layout'] = '/storage/' . $layoutPath;
+            $layoutName = time() . '.' . $request->file('layout')->getClientOriginalExtension();
+            $request->file('layout')->move(public_path('assets/img'), $layoutName);
+            $validated['layout'] = 'assets/img/' . $layoutName;
         }
 
         $venue->update($validated);
@@ -103,12 +103,12 @@ class VenueController extends Controller
     {
         $venue = Venue::findOrFail($id_venue);
 
-        if ($venue->photo && Storage::exists('public/' . $venue->photo)) {
-            Storage::delete('public/' . $venue->photo);
+        if ($venue->photo && file_exists(public_path($venue->photo))) {
+            unlink(public_path($venue->photo));
         }
 
-        if ($venue->layout && Storage::exists('public/' . $venue->layout)) {
-            Storage::delete('public/' . $venue->layout);
+        if ($venue->layout && file_exists(public_path($venue->layout))) {
+            unlink(public_path($venue->layout));
         }
 
         $venue->delete();
